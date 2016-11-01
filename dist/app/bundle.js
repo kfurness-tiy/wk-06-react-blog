@@ -21968,7 +21968,9 @@
 	
 	var _Main = __webpack_require__(/*! ./Main */ 174);
 	
-	var _Footer = __webpack_require__(/*! ./Footer */ 176);
+	var _Footer = __webpack_require__(/*! ./Footer */ 177);
+	
+	var _Sidebar = __webpack_require__(/*! ./Sidebar */ 178);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -21995,6 +21997,7 @@
 	        { className: 'container' },
 	        _react2.default.createElement(_Header.Header, null),
 	        _react2.default.createElement(_Main.Main, null),
+	        _react2.default.createElement(_Sidebar.Sidebar, null),
 	        _react2.default.createElement(_Footer.Footer, null)
 	      );
 	    }
@@ -22133,6 +22136,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _blogPosts = __webpack_require__(/*! ./blog-posts.json */ 176);
+	
+	var _blogPosts2 = _interopRequireDefault(_blogPosts);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22140,6 +22147,8 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	console.log("blogData: ", _blogPosts2.default[0].title);
 	
 	var Post = exports.Post = function (_React$Component) {
 	  _inherits(Post, _React$Component);
@@ -22180,6 +22189,47 @@
 
 /***/ },
 /* 176 */
+/*!********************************************!*\
+  !*** ./src/app/components/blog-posts.json ***!
+  \********************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	module.exports = [{
+		"id": 1,
+		"title": "Blog Post 1",
+		"posted": "2016-10-1Z09:30",
+		"article": "Loves cheeseburgers hate dog. Destroy the blinds lick the plastic bag mew or eat and than sleep on your face yet paw at your fat belly i like big cats and i can not lie. Meow all night having their mate disturbing sleeping humans spot something, big eyes, big eyes, crouch, shake butt, prepare to pounce and Gate keepers of hell but have secret plans. Meow chirp at birds chase after silly colored fish toys around the house or swat turds around the house and ears back wide eyed. Has closed eyes but still sees you curl into a furry donut, so massacre a bird in the living room and then look like the cutest and most innocent animal on the planet. Refuse to leave cardboard box playing with balls of wool but make meme, make cute face and i am the best. Stretch poop on grasses lick sellotape.",
+		"tags": ["cats", "tuna", "toys", "litter box"]
+	}, {
+		"id": 2,
+		"title": "Blog Post #2",
+		"posted": "2016-10-2Z09:30",
+		"article": "Lick the plastic bag spread kitty litter all over house and lick arm hair cough furball attack feet, yet if it smells like fish eat as much as you wish. Chase mice refuse to leave cardboard box vommit food and eat it again for white cat sleeps on a black shirt yet curl into a furry donut and human is washing you why halp oh the horror flee scratch hiss bite. Bleghbleghvomit my furball really tie the room together has closed eyes but still sees you leave hair everywhere sit by the fire scratch the box. Stare at ceiling light chew on cable sun bathe. Toy mouse squeak roll over you call this cat food? cat slap dog in face vommit food and eat it again for slap owner's face at 5am until human fills food dish and fall over dead (not really but gets sypathy) or wake up human for food at 4am. Cough furball lick sellotape put butt in owner's face yet meow meow, i tell my human shake treat bag spread kitty litter all over house yet leave fur on owners clothes.",
+		"tags": ["trouble", "furball", "mice"]
+	}, {
+		"id": 3,
+		"title": "Blog Post #3",
+		"posted": "2016-10-3Z09:30",
+		"article": "Meow for food, then when human fills food dish, take a few bites of food and continue meowing mark territory thinking longingly about tuna brine hopped up on catnip, or cat snacks. Unwrap toilet paper lick the curtain just to be annoying or sniff other cat's butt and hang jaw half open thereafter stretch, for swat at dog shove bum in owner's face like camera lens hunt anything that moves. Hide at bottom of staircase to trip human play time, and kitty power! and pee in human's bed until he cleans the litter box. Eat prawns daintily with a claw then lick paws clean wash down prawns with a lap of carnation milk then retire to the warmest spot on the couch to claw at the fabric before taking a catnap mrow rub face on everything, for leave dead animals as gifts. ",
+		"tags": ["food", "beg", "gifts", "litter box"]
+	}, {
+		"id": 4,
+		"title": "Blog Post #4",
+		"posted": "2016-10-4Z09:30",
+		"article": "Jump launch to pounce upon little yarn mouse, bare fangs at toy run hide in litter box until treats are fed make muffins, but sweet beast, or play time. Favor packaging over toy thinking longingly about tuna brine yet stretch, so climb a tree, wait for a fireman jump to fireman then scratch his face. Rub face on everything intently stare at the same spot sit by the fire but scratch at the door then walk away. Go into a room to decide you didn't want to be in there anyway climb a tree, wait for a fireman jump to fireman then scratch his face stare at the wall, play with food and get confused by dust kick up litter, and put toy mouse in food bowl run out of litter box at full speed swat turds around the house. Swat at dog sit in window and stare ooo, a bird!",
+		"tags": ["Play", "toys", "litter box", "animals"]
+	}, {
+		"id": 5,
+		"title": "Blog Post #5",
+		"posted": "2016-10-5Z09:30",
+		"article": "Kitty ipsum dolor sit amet, shed everywhere shed everywhere stretching attack your ankles chase the red dot, hairball run catnip eat the grass sniff leave dead animals as gifts. Chirp at birds meow immediately regret falling into bathtub all of a sudden cat goes crazy scamper but flop over, but chase after silly colored fish toys around the house. Hack up furballs chase the pig around the house lick plastic bags nap all day, yet hack up furballs paw at your fat belly. Intently stare at the same spot. Wake up human for food at 4am eat the fat cats food for meowzer! human give me attention meow so steal the warm chair right after you get up, for eat the fat cats food. Hide head under blanket so no one can see jump launch to pounce upon little yarn mouse, bare fangs at toy run hide in litter box until treats are fed for need to chase tail, and sweet beast, or catch mouse and gave it as a present. Lick the other cats if it smells like fish eat as much as you wish.",
+		"tags": ["catnip", "toys", "mice", "litter box"]
+	}];
+
+/***/ },
+/* 177 */
 /*!**************************************!*\
   !*** ./src/app/components/Footer.js ***!
   \**************************************/
@@ -22231,6 +22281,182 @@
 	  }]);
 	
 	  return Footer;
+	}(_react2.default.Component);
+
+/***/ },
+/* 178 */
+/*!***************************************!*\
+  !*** ./src/app/components/Sidebar.js ***!
+  \***************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.Sidebar = undefined;
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Months = __webpack_require__(/*! ./Months */ 179);
+	
+	var _Tags = __webpack_require__(/*! ./Tags */ 180);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Sidebar = exports.Sidebar = function (_React$Component) {
+	  _inherits(Sidebar, _React$Component);
+	
+	  function Sidebar() {
+	    _classCallCheck(this, Sidebar);
+	
+	    return _possibleConstructorReturn(this, (Sidebar.__proto__ || Object.getPrototypeOf(Sidebar)).apply(this, arguments));
+	  }
+	
+	  _createClass(Sidebar, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_Months.Months, null),
+	        _react2.default.createElement(_Tags.Tags, null)
+	      );
+	    }
+	  }]);
+	
+	  return Sidebar;
+	}(_react2.default.Component);
+
+/***/ },
+/* 179 */
+/*!**************************************!*\
+  !*** ./src/app/components/Months.js ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.Months = undefined;
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Months = exports.Months = function (_React$Component) {
+	  _inherits(Months, _React$Component);
+	
+	  function Months() {
+	    _classCallCheck(this, Months);
+	
+	    return _possibleConstructorReturn(this, (Months.__proto__ || Object.getPrototypeOf(Months)).apply(this, arguments));
+	  }
+	
+	  _createClass(Months, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'ul',
+	        null,
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          'Month'
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Months;
+	}(_react2.default.Component);
+
+/***/ },
+/* 180 */
+/*!************************************!*\
+  !*** ./src/app/components/Tags.js ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.Tags = undefined;
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Tags = exports.Tags = function (_React$Component) {
+	  _inherits(Tags, _React$Component);
+	
+	  function Tags() {
+	    _classCallCheck(this, Tags);
+	
+	    return _possibleConstructorReturn(this, (Tags.__proto__ || Object.getPrototypeOf(Tags)).apply(this, arguments));
+	  }
+	
+	  _createClass(Tags, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'ul',
+	        null,
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          'Tag 1'
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          'Tag 2'
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          'Tag 3'
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Tags;
 	}(_react2.default.Component);
 
 /***/ }

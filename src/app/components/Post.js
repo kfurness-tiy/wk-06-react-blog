@@ -2,14 +2,24 @@
 
 import React from 'react';
 
+import blogData from './blog-posts.json';
+
 export class Post extends React.Component {
   render() {
     return (
-      <div>
-        <h2>Blog Name</h2>
-        <time> Date & Time </time>
-        <p>Content</p>
-      </div>
+      <section>
+        <h2>{blogData[0].title}</h2>
+        <h4><time>{blogData[0].posted} </time></h4>
+        <p>{blogData[0].article}</p>
+
+        <h2>{blogData[1].title}</h2>
+        <h4><time>{blogData[1].posted} </time></h4>
+        <p>{blogData[1].article}</p>
+
+        <h2>{blogData[2].title}</h2>
+        <h4><time>{blogData[2].posted} </time></h4>
+        <p>{blogData[2].article}</p>
+      </section>
     );
   }
 }
