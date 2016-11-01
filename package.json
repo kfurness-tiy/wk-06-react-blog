@@ -4,7 +4,7 @@
   "description": "\"Blog page using react\"",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -d && cp src/index.html dist/index.html && webpack-dev-server --content-base src/ --inline --hot",
+    "build": "webpack -d && cp src/index.html dist/index.html && cp -R src/app/img/ dist/app/img/ && webpack-dev-server --content-base src/ --inline --hot",
     "start": "npm run build",
     "build:prod": "webpack -p && cp src/index.html dist/index.html"
   },
