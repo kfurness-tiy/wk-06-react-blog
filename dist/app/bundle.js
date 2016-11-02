@@ -21972,7 +21972,7 @@
 	
 	var _Sidebar = __webpack_require__(/*! ./Sidebar */ 185);
 	
-	var _app = __webpack_require__(/*! ./app.sass */ 188);
+	var _app = __webpack_require__(/*! ./app.sass */ 190);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
@@ -22068,7 +22068,7 @@
 	        _react2.default.createElement(_HeaderTop.HeaderTop, null),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'col-sm-12' },
+	          { className: 'coverPhoto col-sm-12' },
 	          _react2.default.createElement(
 	            'h1',
 	            null,
@@ -22142,9 +22142,13 @@
 	              )
 	            ),
 	            _react2.default.createElement(
-	              "li",
-	              null,
-	              "About"
+	              "a",
+	              { href: "#" },
+	              _react2.default.createElement(
+	                "li",
+	                null,
+	                "About"
+	              )
 	            )
 	          )
 	        )
@@ -22196,7 +22200,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".header {\n  padding: 0; }\n  .header h1 {\n    margin: 30px;\n    font-size: 3em;\n    text-align: right; }\n\n.headerTop {\n  background-color: lightgray;\n  display: flex;\n  justify-content: space-between;\n  align-items: center; }\n  .headerTop img {\n    height: 60px;\n    margin: 1vh 5vw; }\n  .headerTop nav {\n    display: inline;\n    margin-right: 5vw; }\n  .headerTop ul {\n    list-style-type: none;\n    display: inline; }\n  .headerTop li {\n    display: inline;\n    padding: 1vw;\n    font-size: 1.25em;\n    font-weight: 500; }\n", ""]);
+	exports.push([module.id, ".header {\n  padding: 0; }\n  .header h1 {\n    margin: 30px;\n    font-size: 3em;\n    text-align: right; }\n\n.headerTop {\n  background-color: lightgray;\n  display: flex;\n  justify-content: space-between;\n  align-items: center; }\n  .headerTop img {\n    height: 60px;\n    margin: 1vh 5vw; }\n  .headerTop nav {\n    display: inline;\n    margin-right: 5vw; }\n  .headerTop ul {\n    list-style-type: none;\n    display: inline; }\n  .headerTop li {\n    display: inline;\n    padding: 1vw;\n    font-size: 1.25em;\n    font-weight: 500; }\n  .headerTop li:hover {\n    color: #5F9EA0; }\n  .headerTop a:hover {\n    text-decoration: none; }\n\n.coverPhoto {\n  background: silver;\n  height: 400px;\n  display: flex;\n  align-items: flex-end;\n  justify-content: flex-end; }\n  .coverPhoto img {\n    height: 400px; }\n", ""]);
 	
 	// exports
 
@@ -22860,9 +22864,13 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Months = __webpack_require__(/*! ./Months */ 186);
+	var _Sidebar = __webpack_require__(/*! ./_Sidebar.sass */ 186);
 	
-	var _Tags = __webpack_require__(/*! ./Tags */ 187);
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	
+	var _Months = __webpack_require__(/*! ./Months */ 188);
+	
+	var _Tags = __webpack_require__(/*! ./Tags */ 189);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22886,7 +22894,12 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'col-sm-3' },
+	        { className: 'sidebar col-sm-3' },
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          'Archives'
+	        ),
 	        _react2.default.createElement(_Months.Months, null),
 	        _react2.default.createElement(_Tags.Tags, null)
 	      );
@@ -22898,6 +22911,52 @@
 
 /***/ },
 /* 186 */
+/*!******************************************!*\
+  !*** ./src/app/components/_Sidebar.sass ***!
+  \******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./_Sidebar.sass */ 187);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 178)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./_Sidebar.sass", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./_Sidebar.sass");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 187 */
+/*!*************************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./src/app/components/_Sidebar.sass ***!
+  \*************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 177)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".sidebar {\n  background-color: #EDEBEB; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 188 */
 /*!**************************************!*\
   !*** ./src/app/components/Months.js ***!
   \**************************************/
@@ -22952,7 +23011,7 @@
 	}(_react2.default.Component);
 
 /***/ },
-/* 187 */
+/* 189 */
 /*!************************************!*\
   !*** ./src/app/components/Tags.js ***!
   \************************************/
@@ -23017,7 +23076,7 @@
 	}(_react2.default.Component);
 
 /***/ },
-/* 188 */
+/* 190 */
 /*!*************************************!*\
   !*** ./src/app/components/app.sass ***!
   \*************************************/
@@ -23026,7 +23085,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./app.sass */ 189);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./app.sass */ 191);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 178)(content, {});
@@ -23046,7 +23105,7 @@
 	}
 
 /***/ },
-/* 189 */
+/* 191 */
 /*!********************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/app/components/app.sass ***!
   \********************************************************************/
