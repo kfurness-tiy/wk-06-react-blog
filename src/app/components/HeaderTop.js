@@ -9,8 +9,8 @@ export class HeaderTop extends React.Component {
         <img src="./app/img/herekittykitty.png" />
         <nav>
           <ul>
-            <li>Home</li>
-            <li>About</li>
+            <a href="#"><li>Home</li></a>
+            <a href="#"><li>About</li></a>
           </ul>
         </nav>
       </div>
