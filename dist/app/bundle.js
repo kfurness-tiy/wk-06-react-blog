@@ -21966,11 +21966,11 @@
 	
 	var _Header = __webpack_require__(/*! ./Header */ 173);
 	
-	var _Main = __webpack_require__(/*! ./Main */ 178);
+	var _Main = __webpack_require__(/*! ./Main */ 179);
 	
-	var _Footer = __webpack_require__(/*! ./Footer */ 181);
+	var _Footer = __webpack_require__(/*! ./Footer */ 182);
 	
-	var _Sidebar = __webpack_require__(/*! ./Sidebar */ 182);
+	var _Sidebar = __webpack_require__(/*! ./Sidebar */ 183);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22028,7 +22028,9 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Header = __webpack_require__(/*! ./Header.sass */ 174);
+	var _TopOfHeader = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./TopOfHeader\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	
+	var _Header = __webpack_require__(/*! ./Header.sass */ 175);
 	
 	var _Header2 = _interopRequireDefault(_Header);
 	
@@ -22055,11 +22057,15 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'header col-sm-12' },
-	        _react2.default.createElement('img', { src: '/img/catlogo.png' }),
+	        _react2.default.createElement(_TopOfHeader.TopOfHeader, null),
 	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          'Life of a Cat'
+	          'div',
+	          { className: 'header col-sm-12' },
+	          _react2.default.createElement(
+	            'h1',
+	            null,
+	            'Life of a Cat'
+	          )
 	        )
 	      );
 	    }
@@ -22069,7 +22075,8 @@
 	}(_react2.default.Component);
 
 /***/ },
-/* 174 */
+/* 174 */,
+/* 175 */
 /*!****************************************!*\
   !*** ./src/app/components/Header.sass ***!
   \****************************************/
@@ -22078,10 +22085,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./Header.sass */ 175);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./Header.sass */ 176);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 177)(content, {});
+	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 178)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -22098,24 +22105,24 @@
 	}
 
 /***/ },
-/* 175 */
+/* 176 */
 /*!***********************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/app/components/Header.sass ***!
   \***********************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 176)();
+	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 177)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".header {\n  background-color: red; }\n", ""]);
+	exports.push([module.id, ".header {\n  background-color: lightgray;\n  display: flex;\n  align-items: center;\n  padding: 30px;\n  margin-bottom: 3vh; }\n  .header img {\n    height: 90px; }\n  .header h1 {\n    display: inline;\n    margin: 30px;\n    font-size: 3em; }\n", ""]);
 	
 	// exports
 
 
 /***/ },
-/* 176 */
+/* 177 */
 /*!**************************************!*\
   !*** ./~/css-loader/lib/css-base.js ***!
   \**************************************/
@@ -22174,7 +22181,7 @@
 
 
 /***/ },
-/* 177 */
+/* 178 */
 /*!*************************************!*\
   !*** ./~/style-loader/addStyles.js ***!
   \*************************************/
@@ -22429,7 +22436,7 @@
 
 
 /***/ },
-/* 178 */
+/* 179 */
 /*!************************************!*\
   !*** ./src/app/components/Main.js ***!
   \************************************/
@@ -22448,7 +22455,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Post = __webpack_require__(/*! ./Post */ 179);
+	var _Post = __webpack_require__(/*! ./Post */ 180);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22472,7 +22479,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'col-sm-9' },
 	        _react2.default.createElement(_Post.Post, null)
 	      );
 	    }
@@ -22482,7 +22489,7 @@
 	}(_react2.default.Component);
 
 /***/ },
-/* 179 */
+/* 180 */
 /*!************************************!*\
   !*** ./src/app/components/Post.js ***!
   \************************************/
@@ -22501,7 +22508,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _blogPosts = __webpack_require__(/*! ./blog-posts.json */ 180);
+	var _blogPosts = __webpack_require__(/*! ./blog-posts.json */ 181);
 	
 	var _blogPosts2 = _interopRequireDefault(_blogPosts);
 	
@@ -22527,10 +22534,10 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'section',
-	        { className: 'col-sm-12' },
+	        null,
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'col-sm-4' },
+	          { className: 'col-sm-6' },
 	          _react2.default.createElement(
 	            'h2',
 	            null,
@@ -22554,7 +22561,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'col-sm-4' },
+	          { className: 'col-sm-6' },
 	          _react2.default.createElement(
 	            'h2',
 	            null,
@@ -22578,7 +22585,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'col-sm-4' },
+	          { className: 'col-sm-6' },
 	          _react2.default.createElement(
 	            'h2',
 	            null,
@@ -22608,7 +22615,7 @@
 	}(_react2.default.Component);
 
 /***/ },
-/* 180 */
+/* 181 */
 /*!********************************************!*\
   !*** ./src/app/components/blog-posts.json ***!
   \********************************************/
@@ -22649,7 +22656,7 @@
 	}];
 
 /***/ },
-/* 181 */
+/* 182 */
 /*!**************************************!*\
   !*** ./src/app/components/Footer.js ***!
   \**************************************/
@@ -22690,11 +22697,11 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'col-sm-12' },
 	        _react2.default.createElement(
-	          'h3',
+	          'p',
 	          null,
-	          'I am a footer'
+	          '\xA92016'
 	        )
 	      );
 	    }
@@ -22704,7 +22711,7 @@
 	}(_react2.default.Component);
 
 /***/ },
-/* 182 */
+/* 183 */
 /*!***************************************!*\
   !*** ./src/app/components/Sidebar.js ***!
   \***************************************/
@@ -22723,9 +22730,9 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Months = __webpack_require__(/*! ./Months */ 183);
+	var _Months = __webpack_require__(/*! ./Months */ 184);
 	
-	var _Tags = __webpack_require__(/*! ./Tags */ 184);
+	var _Tags = __webpack_require__(/*! ./Tags */ 185);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22749,7 +22756,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'col-sm-3' },
 	        _react2.default.createElement(_Months.Months, null),
 	        _react2.default.createElement(_Tags.Tags, null)
 	      );
@@ -22760,7 +22767,7 @@
 	}(_react2.default.Component);
 
 /***/ },
-/* 183 */
+/* 184 */
 /*!**************************************!*\
   !*** ./src/app/components/Months.js ***!
   \**************************************/
@@ -22815,7 +22822,7 @@
 	}(_react2.default.Component);
 
 /***/ },
-/* 184 */
+/* 185 */
 /*!************************************!*\
   !*** ./src/app/components/Tags.js ***!
   \************************************/

@@ -6,7 +6,7 @@ import {Post} from './Post';
 export class Main extends React.Component {
   render () {
     return (
-      <div>
+      <div className="col-sm-9">
         <Post />
       </div>
     );

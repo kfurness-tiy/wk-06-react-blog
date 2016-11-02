@@ -7,7 +7,7 @@ import {Tags} from './Tags'
 export class Sidebar extends React.Component {
   render () {
     return (
-      <div>
+      <div className="col-sm-3">
         <Months />
         <Tags />
       </div>
