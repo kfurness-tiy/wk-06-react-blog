@@ -1,13 +1,14 @@
 'use strict';
 
 import React from 'react';
-import {Post} from './Post';
+import Post from './Post';
 
-export class Main extends React.Component {
+
+export default class Main extends React.Component {
   render () {
     return (
       <div className="col-sm-9">
-        <Post />
+        <Post blogData={this.props.blogData} />
       </div>
     );
   }

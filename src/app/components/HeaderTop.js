@@ -2,7 +2,7 @@
 
 import React from "react";
 
-export class HeaderTop extends React.Component {
+export default class HeaderTop extends React.Component {
   render () {
     return (
       <div className="header headerTop col-sm-12">

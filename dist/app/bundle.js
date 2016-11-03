@@ -22883,6 +22883,8 @@
 	
 	var _Tags = __webpack_require__(/*! ./Tags */ 190);
 	
+	var _Tags2 = _interopRequireDefault(_Tags);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22912,7 +22914,7 @@
 	          'Archives'
 	        ),
 	        _react2.default.createElement(_Months.Months, null),
-	        _react2.default.createElement(_Tags.Tags, null)
+	        _react2.default.createElement(_Tags2.default, null)
 	      );
 	    }
 	  }]);
@@ -23033,7 +23035,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.Tags = undefined;
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -23049,7 +23050,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Tags = exports.Tags = function (_React$Component) {
+	var Tags = function (_React$Component) {
 	  _inherits(Tags, _React$Component);
 	
 	  function Tags() {
@@ -23080,6 +23081,8 @@
 	
 	  return Tags;
 	}(_react2.default.Component);
+	
+	exports.default = Tags;
 
 /***/ },
 /* 191 */

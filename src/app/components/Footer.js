@@ -3,7 +3,7 @@
 import React from 'react';
 import footer from './_Footer.sass'
 
-export class Footer extends React.Component {
+export default class Footer extends React.Component {
   render () {
     return (
       <footer className="col-sm-12">

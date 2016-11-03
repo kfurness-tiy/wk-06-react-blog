@@ -1,10 +1,10 @@
 'use strict';
 
 import React from 'react';
-import {HeaderTop} from './HeaderTop'
+import HeaderTop from './HeaderTop'
 import headerStyle from './_Header.sass';
 
-export class Header extends React.Component {
+export default class Header extends React.Component {
   render () {
     return (
       <div className="header container-fluid">

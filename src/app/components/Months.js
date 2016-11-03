@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-export class Months extends React.Component {
+export default class Months extends React.Component {
   render () {
     return (
       <ul>
