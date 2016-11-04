@@ -27,3 +27,6 @@ export default class Post extends React.Component {
     );
   }
 }
+
+//WIP Paragraph breaks in json
+// break apart post
