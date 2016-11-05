@@ -21966,15 +21966,27 @@
 	
 	var _Header = __webpack_require__(/*! ./Header */ 173);
 	
+	var _Header2 = _interopRequireDefault(_Header);
+	
 	var _Main = __webpack_require__(/*! ./Main */ 180);
 	
-	var _Footer = __webpack_require__(/*! ./Footer */ 183);
+	var _Main2 = _interopRequireDefault(_Main);
 	
-	var _Sidebar = __webpack_require__(/*! ./Sidebar */ 186);
+	var _Sidebar = __webpack_require__(/*! ./Sidebar */ 183);
+	
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	
+	var _Footer = __webpack_require__(/*! ./Footer */ 188);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
 	
 	var _app = __webpack_require__(/*! ./app.sass */ 191);
 	
 	var _app2 = _interopRequireDefault(_app);
+	
+	var _blogPosts = __webpack_require__(/*! ./blog-posts.json */ 193);
+	
+	var _blogPosts2 = _interopRequireDefault(_blogPosts);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -21990,7 +22002,12 @@
 	  function App() {
 	    _classCallCheck(this, App);
 	
-	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+	
+	    _this.state = {
+	      blogData: _blogPosts2.default
+	    };
+	    return _this;
 	  }
 	
 	  _createClass(App, [{
@@ -21999,14 +22016,14 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'parentContainer' },
-	        _react2.default.createElement(_Header.Header, null),
+	        _react2.default.createElement(_Header2.default, null),
 	        _react2.default.createElement(
 	          'main',
 	          { className: 'center-block' },
-	          _react2.default.createElement(_Main.Main, null),
-	          _react2.default.createElement(_Sidebar.Sidebar, null)
+	          _react2.default.createElement(_Main2.default, { blogData: this.state.blogData }),
+	          _react2.default.createElement(_Sidebar2.default, null)
 	        ),
-	        _react2.default.createElement(_Footer.Footer, null)
+	        _react2.default.createElement(_Footer2.default, null)
 	      );
 	    }
 	  }]);
@@ -22028,7 +22045,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.Header = undefined;
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -22037,6 +22053,8 @@
 	var _react2 = _interopRequireDefault(_react);
 	
 	var _HeaderTop = __webpack_require__(/*! ./HeaderTop */ 174);
+	
+	var _HeaderTop2 = _interopRequireDefault(_HeaderTop);
 	
 	var _Header = __webpack_require__(/*! ./_Header.sass */ 175);
 	
@@ -22050,7 +22068,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Header = exports.Header = function (_React$Component) {
+	var Header = function (_React$Component) {
 	  _inherits(Header, _React$Component);
 	
 	  function Header() {
@@ -22065,7 +22083,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'header container-fluid' },
-	        _react2.default.createElement(_HeaderTop.HeaderTop, null),
+	        _react2.default.createElement(_HeaderTop2.default, null),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'coverPhoto col-sm-12' },
@@ -22081,6 +22099,8 @@
 	
 	  return Header;
 	}(_react2.default.Component);
+	
+	exports.default = Header;
 
 /***/ },
 /* 174 */
@@ -22094,7 +22114,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.HeaderTop = undefined;
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -22110,7 +22129,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var HeaderTop = exports.HeaderTop = function (_React$Component) {
+	var HeaderTop = function (_React$Component) {
 	  _inherits(HeaderTop, _React$Component);
 	
 	  function HeaderTop() {
@@ -22158,6 +22177,8 @@
 	
 	  return HeaderTop;
 	}(_react2.default.Component);
+	
+	exports.default = HeaderTop;
 
 /***/ },
 /* 175 */
@@ -22542,7 +22563,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.Main = undefined;
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -22552,6 +22572,8 @@
 	
 	var _Post = __webpack_require__(/*! ./Post */ 181);
 	
+	var _Post2 = _interopRequireDefault(_Post);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22560,7 +22582,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Main = exports.Main = function (_React$Component) {
+	var Main = function (_React$Component) {
 	  _inherits(Main, _React$Component);
 	
 	  function Main() {
@@ -22575,13 +22597,15 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'col-sm-9' },
-	        _react2.default.createElement(_Post.Post, null)
+	        _react2.default.createElement(_Post2.default, { blogData: this.props.blogData })
 	      );
 	    }
 	  }]);
 	
 	  return Main;
 	}(_react2.default.Component);
+	
+	exports.default = Main;
 
 /***/ },
 /* 181 */
@@ -22595,7 +22619,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.Post = undefined;
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -22603,9 +22626,9 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _blogPosts = __webpack_require__(/*! ./blog-posts.json */ 182);
+	var _PostParagraphs = __webpack_require__(/*! ./PostParagraphs */ 182);
 	
-	var _blogPosts2 = _interopRequireDefault(_blogPosts);
+	var _PostParagraphs2 = _interopRequireDefault(_PostParagraphs);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22615,7 +22638,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Post = exports.Post = function (_React$Component) {
+	var Post = function (_React$Component) {
 	  _inherits(Post, _React$Component);
 	
 	  function Post() {
@@ -22627,6 +22650,7 @@
 	  _createClass(Post, [{
 	    key: 'render',
 	    value: function render() {
+	
 	      return _react2.default.createElement(
 	        'section',
 	        null,
@@ -22636,7 +22660,7 @@
 	          _react2.default.createElement(
 	            'h2',
 	            null,
-	            _blogPosts2.default[0].title
+	            this.props.blogData[0].title
 	          ),
 	          _react2.default.createElement(
 	            'h4',
@@ -22644,15 +22668,11 @@
 	            _react2.default.createElement(
 	              'time',
 	              null,
-	              _blogPosts2.default[0].posted,
+	              this.props.blogData[0].posted,
 	              ' '
 	            )
 	          ),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            _blogPosts2.default[0].article
-	          )
+	          _react2.default.createElement(_PostParagraphs2.default, { pData: this.props.blogData[0].article })
 	        ),
 	        _react2.default.createElement(
 	          'div',
@@ -22660,7 +22680,7 @@
 	          _react2.default.createElement(
 	            'h2',
 	            null,
-	            _blogPosts2.default[1].title
+	            this.props.blogData[1].title
 	          ),
 	          _react2.default.createElement(
 	            'h4',
@@ -22668,15 +22688,11 @@
 	            _react2.default.createElement(
 	              'time',
 	              null,
-	              _blogPosts2.default[1].posted,
+	              this.props.blogData[1].posted,
 	              ' '
 	            )
 	          ),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            _blogPosts2.default[1].article
-	          )
+	          _react2.default.createElement(_PostParagraphs2.default, { pData: this.props.blogData[1].article })
 	        ),
 	        _react2.default.createElement(
 	          'div',
@@ -22684,7 +22700,7 @@
 	          _react2.default.createElement(
 	            'h2',
 	            null,
-	            _blogPosts2.default[2].title
+	            this.props.blogData[2].title
 	          ),
 	          _react2.default.createElement(
 	            'h4',
@@ -22692,15 +22708,11 @@
 	            _react2.default.createElement(
 	              'time',
 	              null,
-	              _blogPosts2.default[2].posted,
+	              this.props.blogData[2].posted,
 	              ' '
 	            )
 	          ),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            _blogPosts2.default[2].article
-	          )
+	          _react2.default.createElement(_PostParagraphs2.default, { pData: this.props.blogData[2].article })
 	        )
 	      );
 	    }
@@ -22708,53 +22720,18 @@
 	
 	  return Post;
 	}(_react2.default.Component);
+	
+	//WIP Paragraph breaks in json
+	// break apart post
+	
+	
+	exports.default = Post;
 
 /***/ },
 /* 182 */
-/*!********************************************!*\
-  !*** ./src/app/components/blog-posts.json ***!
-  \********************************************/
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	module.exports = [{
-		"id": 1,
-		"title": "Blog Post 1",
-		"posted": "October 1, 2016 9:30am",
-		"article": "Loves cheeseburgers hate dog. Destroy the blinds lick the plastic bag mew or eat and than sleep on your face yet paw at your fat belly i like big cats and i can not lie. Meow all night having their mate disturbing sleeping humans spot something, big eyes, big eyes, crouch, shake butt, prepare to pounce and Gate keepers of hell but have secret plans. Meow chirp at birds chase after silly colored fish toys around the house or swat turds around the house and ears back wide eyed. Has closed eyes but still sees you curl into a furry donut, so massacre a bird in the living room and then look like the cutest and most innocent animal on the planet. Refuse to leave cardboard box playing with balls of wool but make meme, make cute face and i am the best. Stretch poop on grasses lick sellotape.",
-		"tags": ["cats", "tuna", "toys", "litter box"]
-	}, {
-		"id": 2,
-		"title": "Blog Post #2",
-		"posted": "October 2, 2016 9:30am",
-		"article": "Lick the plastic bag spread kitty litter all over house and lick arm hair cough furball attack feet, yet if it smells like fish eat as much as you wish. Chase mice refuse to leave cardboard box vommit food and eat it again for white cat sleeps on a black shirt yet curl into a furry donut and human is washing you why halp oh the horror flee scratch hiss bite. Bleghbleghvomit my furball really tie the room together has closed eyes but still sees you leave hair everywhere sit by the fire scratch the box. Stare at ceiling light chew on cable sun bathe. Toy mouse squeak roll over you call this cat food? cat slap dog in face vommit food and eat it again for slap owner's face at 5am until human fills food dish and fall over dead (not really but gets sypathy) or wake up human for food at 4am. Cough furball lick sellotape put butt in owner's face yet meow meow, i tell my human shake treat bag spread kitty litter all over house yet leave fur on owners clothes.",
-		"tags": ["trouble", "furball", "mice"]
-	}, {
-		"id": 3,
-		"title": "Blog Post #3",
-		"posted": "October 3, 2016 9:30am",
-		"article": "Meow for food, then when human fills food dish, take a few bites of food and continue meowing mark territory thinking longingly about tuna brine hopped up on catnip, or cat snacks. Unwrap toilet paper lick the curtain just to be annoying or sniff other cat's butt and hang jaw half open thereafter stretch, for swat at dog shove bum in owner's face like camera lens hunt anything that moves. Hide at bottom of staircase to trip human play time, and kitty power! and pee in human's bed until he cleans the litter box. Eat prawns daintily with a claw then lick paws clean wash down prawns with a lap of carnation milk then retire to the warmest spot on the couch to claw at the fabric before taking a catnap mrow rub face on everything, for leave dead animals as gifts. ",
-		"tags": ["food", "beg", "gifts", "litter box"]
-	}, {
-		"id": 4,
-		"title": "Blog Post #4",
-		"posted": "October 4, 2016 9:30am",
-		"article": "Jump launch to pounce upon little yarn mouse, bare fangs at toy run hide in litter box until treats are fed make muffins, but sweet beast, or play time. Favor packaging over toy thinking longingly about tuna brine yet stretch, so climb a tree, wait for a fireman jump to fireman then scratch his face. Rub face on everything intently stare at the same spot sit by the fire but scratch at the door then walk away. Go into a room to decide you didn't want to be in there anyway climb a tree, wait for a fireman jump to fireman then scratch his face stare at the wall, play with food and get confused by dust kick up litter, and put toy mouse in food bowl run out of litter box at full speed swat turds around the house. Swat at dog sit in window and stare ooo, a bird!",
-		"tags": ["Play", "toys", "litter box", "animals"]
-	}, {
-		"id": 5,
-		"title": "Blog Post #5",
-		"posted": "October 5, 2016 9:30am",
-		"article": "Kitty ipsum dolor sit amet, shed everywhere shed everywhere stretching attack your ankles chase the red dot, hairball run catnip eat the grass sniff leave dead animals as gifts. Chirp at birds meow immediately regret falling into bathtub all of a sudden cat goes crazy scamper but flop over, but chase after silly colored fish toys around the house. Hack up furballs chase the pig around the house lick plastic bags nap all day, yet hack up furballs paw at your fat belly. Intently stare at the same spot. Wake up human for food at 4am eat the fat cats food for meowzer! human give me attention meow so steal the warm chair right after you get up, for eat the fat cats food. Hide head under blanket so no one can see jump launch to pounce upon little yarn mouse, bare fangs at toy run hide in litter box until treats are fed for need to chase tail, and sweet beast, or catch mouse and gave it as a present. Lick the other cats if it smells like fish eat as much as you wish.",
-		"tags": ["catnip", "toys", "mice", "litter box"]
-	}];
-
-/***/ },
-/* 183 */
-/*!**************************************!*\
-  !*** ./src/app/components/Footer.js ***!
-  \**************************************/
+/*!**********************************************!*\
+  !*** ./src/app/components/PostParagraphs.js ***!
+  \**********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22762,17 +22739,12 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.Footer = undefined;
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(/*! react */ 1);
 	
 	var _react2 = _interopRequireDefault(_react);
-	
-	var _Footer = __webpack_require__(/*! ./_Footer.sass */ 184);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22782,81 +22754,39 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Footer = exports.Footer = function (_React$Component) {
-	  _inherits(Footer, _React$Component);
+	var PostParagraphs = function (_React$Component) {
+	  _inherits(PostParagraphs, _React$Component);
 	
-	  function Footer() {
-	    _classCallCheck(this, Footer);
+	  function PostParagraphs() {
+	    _classCallCheck(this, PostParagraphs);
 	
-	    return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (PostParagraphs.__proto__ || Object.getPrototypeOf(PostParagraphs)).apply(this, arguments));
 	  }
 	
-	  _createClass(Footer, [{
-	    key: 'render',
+	  _createClass(PostParagraphs, [{
+	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'footer',
-	        { className: 'col-sm-12' },
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          '\xA92016'
-	        )
+	        "div",
+	        null,
+	        this.props.pData.map(function (c, i) {
+	          return _react2.default.createElement(
+	            "p",
+	            { key: i },
+	            c
+	          );
+	        })
 	      );
 	    }
 	  }]);
 	
-	  return Footer;
+	  return PostParagraphs;
 	}(_react2.default.Component);
+	
+	exports.default = PostParagraphs;
 
 /***/ },
-/* 184 */
-/*!*****************************************!*\
-  !*** ./src/app/components/_Footer.sass ***!
-  \*****************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./_Footer.sass */ 185);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 179)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./_Footer.sass", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./_Footer.sass");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 185 */
-/*!************************************************************************!*\
-  !*** ./~/css-loader!./~/sass-loader!./src/app/components/_Footer.sass ***!
-  \************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 177)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, "footer {\n  display: flex;\n  align-items: center;\n  background-color: lightgrey;\n  height: 70px; }\n  footer p {\n    font-size: 1.25em;\n    margin-bottom: 0;\n    margin-left: 3vw; }\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 186 */
+/* 183 */
 /*!***************************************!*\
   !*** ./src/app/components/Sidebar.js ***!
   \***************************************/
@@ -22867,7 +22797,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.Sidebar = undefined;
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -22875,13 +22804,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Sidebar = __webpack_require__(/*! ./_Sidebar.sass */ 187);
+	var _Sidebar = __webpack_require__(/*! ./_Sidebar.sass */ 184);
 	
 	var _Sidebar2 = _interopRequireDefault(_Sidebar);
 	
-	var _Months = __webpack_require__(/*! ./Months */ 189);
+	var _Months = __webpack_require__(/*! ./Months */ 186);
 	
-	var _Tags = __webpack_require__(/*! ./Tags */ 190);
+	var _Months2 = _interopRequireDefault(_Months);
+	
+	var _Tags = __webpack_require__(/*! ./Tags */ 187);
 	
 	var _Tags2 = _interopRequireDefault(_Tags);
 	
@@ -22893,7 +22824,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Sidebar = exports.Sidebar = function (_React$Component) {
+	var Sidebar = function (_React$Component) {
 	  _inherits(Sidebar, _React$Component);
 	
 	  function Sidebar() {
@@ -22913,7 +22844,7 @@
 	          null,
 	          'Archives'
 	        ),
-	        _react2.default.createElement(_Months.Months, null),
+	        _react2.default.createElement(_Months2.default, null),
 	        _react2.default.createElement(_Tags2.default, null)
 	      );
 	    }
@@ -22921,9 +22852,11 @@
 	
 	  return Sidebar;
 	}(_react2.default.Component);
+	
+	exports.default = Sidebar;
 
 /***/ },
-/* 187 */
+/* 184 */
 /*!******************************************!*\
   !*** ./src/app/components/_Sidebar.sass ***!
   \******************************************/
@@ -22932,7 +22865,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./_Sidebar.sass */ 188);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./_Sidebar.sass */ 185);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 179)(content, {});
@@ -22952,7 +22885,7 @@
 	}
 
 /***/ },
-/* 188 */
+/* 185 */
 /*!*************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/app/components/_Sidebar.sass ***!
   \*************************************************************************/
@@ -22969,7 +22902,7 @@
 
 
 /***/ },
-/* 189 */
+/* 186 */
 /*!**************************************!*\
   !*** ./src/app/components/Months.js ***!
   \**************************************/
@@ -22980,7 +22913,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.Months = undefined;
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -22996,7 +22928,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Months = exports.Months = function (_React$Component) {
+	var Months = function (_React$Component) {
 	  _inherits(Months, _React$Component);
 	
 	  function Months() {
@@ -23022,9 +22954,11 @@
 	
 	  return Months;
 	}(_react2.default.Component);
+	
+	exports.default = Months;
 
 /***/ },
-/* 190 */
+/* 187 */
 /*!************************************!*\
   !*** ./src/app/components/Tags.js ***!
   \************************************/
@@ -23085,6 +23019,112 @@
 	exports.default = Tags;
 
 /***/ },
+/* 188 */
+/*!**************************************!*\
+  !*** ./src/app/components/Footer.js ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Footer = __webpack_require__(/*! ./_Footer.sass */ 189);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Footer = function (_React$Component) {
+	  _inherits(Footer, _React$Component);
+	
+	  function Footer() {
+	    _classCallCheck(this, Footer);
+	
+	    return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
+	  }
+	
+	  _createClass(Footer, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'footer',
+	        { className: 'col-sm-12' },
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          '\xA92016'
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Footer;
+	}(_react2.default.Component);
+	
+	exports.default = Footer;
+
+/***/ },
+/* 189 */
+/*!*****************************************!*\
+  !*** ./src/app/components/_Footer.sass ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./_Footer.sass */ 190);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 179)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./_Footer.sass", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./_Footer.sass");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 190 */
+/*!************************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./src/app/components/_Footer.sass ***!
+  \************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 177)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "footer {\n  display: flex;\n  align-items: center;\n  background-color: lightgrey;\n  height: 70px; }\n  footer p {\n    font-size: 1.25em;\n    margin-bottom: 0;\n    margin-left: 3vw; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
 /* 191 */
 /*!*************************************!*\
   !*** ./src/app/components/app.sass ***!
@@ -23129,6 +23169,47 @@
 	
 	// exports
 
+
+/***/ },
+/* 193 */
+/*!********************************************!*\
+  !*** ./src/app/components/blog-posts.json ***!
+  \********************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	module.exports = [{
+		"id": 1,
+		"title": "Blog Post 1",
+		"posted": "October 1, 2016 9:30am",
+		"article": ["Loves cheeseburgers hate dog. Destroy the blinds lick the plastic bag mew or eat and than sleep on your face yet paw at your fat belly i like big cats and i can not lie.", " Meow all night having their mate disturbing sleeping humans spot something, big eyes, big eyes, crouch, shake butt, prepare to pounce and Gate keepers of hell but have secret plans. Meow chirp at birds chase after silly colored fish toys around the house or swat turds around the house and ears back wide eyed. Has closed eyes but still sees you curl into a furry donut, so massacre a bird in the living room and then look like the cutest and most innocent animal on the planet.", " Refuse to leave cardboard box playing with balls of wool but make meme, make cute face and i am the best. Stretch poop on grasses lick sellotape."],
+		"tags": ["cats", "tuna", "toys", "litter box"]
+	}, {
+		"id": 2,
+		"title": "Blog Post #2",
+		"posted": "October 2, 2016 9:30am",
+		"article": ["Lick the plastic bag spread kitty litter all over house and lick arm hair cough furball attack feet, yet if it smells like fish eat as much as you wish. Chase mice refuse to leave cardboard box vommit food and eat it again for white cat sleeps on a black shirt yet curl into a furry donut and human is washing you why halp oh the horror flee scratch hiss bite.", "Bleghbleghvomit my furball really tie the room together has closed eyes but still sees you leave hair everywhere sit by the fire scratch the box. Stare at ceiling light chew on cable sun bathe. Toy mouse squeak roll over you call this cat food?", "Cat slap dog in face vommit food and eat it again for slap owner's face at 5am until human fills food dish and fall over dead (not really but gets sypathy) or wake up human for food at 4am. Cough furball lick sellotape put butt in owner's face yet meow meow, i tell my human shake treat bag spread kitty litter all over house yet leave fur on owners clothes."],
+		"tags": ["trouble", "furball", "mice"]
+	}, {
+		"id": 3,
+		"title": "Blog Post #3",
+		"posted": "October 3, 2016 9:30am",
+		"article": ["Meow for food, then when human fills food dish, take a few bites of food and continue meowing mark territory thinking longingly about tuna brine hopped up on catnip, or cat snacks. Unwrap toilet paper lick the curtain just to be annoying or sniff other cat's butt and hang jaw half open thereafter stretch, for swat at dog shove bum in owner's face like camera lens hunt anything that moves.", "Hide at bottom of staircase to trip human play time, and kitty power! and pee in human's bed until he cleans the litter box. Eat prawns daintily with a claw then lick paws clean wash down prawns with a lap of carnation milk then retire to the warmest spot on the couch to claw at the fabric before taking a catnap mrow rub face on everything, for leave dead animals as gifts."],
+		"tags": ["food", "beg", "gifts", "litter box"]
+	}, {
+		"id": 4,
+		"title": "Blog Post #4",
+		"posted": "October 4, 2016 9:30am",
+		"article": ["Jump launch to pounce upon little yarn mouse, bare fangs at toy run hide in litter box until treats are fed make muffins, but sweet beast, or play time. Favor packaging over toy thinking longingly about tuna brine yet stretch, so climb a tree, wait for a fireman jump to fireman then scratch his face. Rub face on everything intently stare at the same spot sit by the fire but scratch at the door then walk away.", "Go into a room to decide you didn't want to be in there anyway climb a tree, wait for a fireman jump to fireman then scratch his face stare at the wall, play with food and get confused by dust kick up litter, and put toy mouse in food bowl run out of litter box at full speed swat turds around the house. Swat at dog sit in window and stare ooo, a bird!"],
+		"tags": ["Play", "toys", "litter box", "animals"]
+	}, {
+		"id": 5,
+		"title": "Blog Post #5",
+		"posted": "October 5, 2016 9:30am",
+		"article": ["Kitty ipsum dolor sit amet, shed everywhere shed everywhere stretching attack your ankles chase the red dot, hairball run catnip eat the grass sniff leave dead animals as gifts.", "Chirp at birds meow immediately regret falling into bathtub all of a sudden cat goes crazy scamper but flop over, but chase after silly colored fish toys around the house. Hack up furballs chase the pig around the house lick plastic bags nap all day, yet hack up furballs paw at your fat belly.", "Intently stare at the same spot. Wake up human for food at 4am eat the fat cats food for meowzer! human give me attention meow so steal the warm chair right after you get up, for eat the fat cats food.", "Hide head under blanket so no one can see jump launch to pounce upon little yarn mouse, bare fangs at toy run hide in litter box until treats are fed for need to chase tail, and sweet beast, or catch mouse and gave it as a present. Lick the other cats if it smells like fish eat as much as you wish."],
+		"tags": ["catnip", "toys", "mice", "litter box"]
+	}];
 
 /***/ }
 /******/ ]);
