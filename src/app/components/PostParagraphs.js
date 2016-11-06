@@ -6,9 +6,9 @@ export default class PostParagraphs extends React.Component {
   render () {
     return (
       <div>
-        {this.props.pData.map(function (c,i) {
-          return <p key={i}>{c}</p>
-        })}
+      {this.props.pData.map(function (c,i) {
+        return <p key={i}>{c}</p>
+      })}
       </div>
     )
   }
