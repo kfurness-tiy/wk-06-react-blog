@@ -22775,7 +22775,7 @@
 	
 	var _Months2 = _interopRequireDefault(_Months);
 	
-	var _Tags = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./Tags\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _Tags = __webpack_require__(/*! ./Tags */ 187);
 	
 	var _Tags2 = _interopRequireDefault(_Tags);
 	
@@ -22799,7 +22799,6 @@
 	  _createClass(Sidebar, [{
 	    key: 'render',
 	    value: function render() {
-	      console.log(this.props.blogData);
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'sidebar col-sm-3' },
@@ -22920,7 +22919,7 @@
 	        _react2.default.createElement(
 	          'li',
 	          null,
-	          'Month'
+	          'October'
 	        )
 	      );
 	    }
@@ -22932,7 +22931,77 @@
 	exports.default = Months;
 
 /***/ },
-/* 187 */,
+/* 187 */
+/*!************************************!*\
+  !*** ./src/app/components/Tags.js ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Tags = function (_React$Component) {
+	  _inherits(Tags, _React$Component);
+	
+	  function Tags() {
+	    _classCallCheck(this, Tags);
+	
+	    return _possibleConstructorReturn(this, (Tags.__proto__ || Object.getPrototypeOf(Tags)).apply(this, arguments));
+	  }
+	
+	  _createClass(Tags, [{
+	    key: 'render',
+	    value: function render() {
+	      var data = this.props.blogData;
+	      var tagsArr = [];
+	      data.map(function (c, i, a) {
+	        data[i].tags.map(function (c, i, a) {
+	          if (tagsArr.indexOf(c) === -1) {
+	            tagsArr.push(c);
+	            tagsArr.sort();
+	          }
+	        });
+	      });
+	      console.log(tagsArr);
+	      return _react2.default.createElement(
+	        'ul',
+	        null,
+	        tagsArr.map(function (c, i, a) {
+	          return _react2.default.createElement(
+	            'li',
+	            { key: c + i },
+	            ' ',
+	            c,
+	            ' '
+	          );
+	        })
+	      );
+	    }
+	  }]);
+	
+	  return Tags;
+	}(_react2.default.Component);
+	
+	exports.default = Tags;
+
+/***/ },
 /* 188 */
 /*!**************************************!*\
   !*** ./src/app/components/Footer.js ***!
@@ -23116,7 +23185,7 @@
 		"title": "Blog Post #4",
 		"posted": "October 4, 2016 9:30am",
 		"article": ["Jump launch to pounce upon little yarn mouse, bare fangs at toy run hide in litter box until treats are fed make muffins, but sweet beast, or play time. Favor packaging over toy thinking longingly about tuna brine yet stretch, so climb a tree, wait for a fireman jump to fireman then scratch his face. Rub face on everything intently stare at the same spot sit by the fire but scratch at the door then walk away.", "Go into a room to decide you didn't want to be in there anyway climb a tree, wait for a fireman jump to fireman then scratch his face stare at the wall, play with food and get confused by dust kick up litter, and put toy mouse in food bowl run out of litter box at full speed swat turds around the house. Swat at dog sit in window and stare ooo, a bird!"],
-		"tags": ["Play", "toys", "litter box", "animals"]
+		"tags": ["play", "toys", "litter box", "animals"]
 	}, {
 		"id": 5,
 		"title": "Blog Post #5",
