@@ -22021,7 +22021,7 @@
 	          'main',
 	          { className: 'center-block' },
 	          _react2.default.createElement(_Main2.default, { blogData: this.state.blogData }),
-	          _react2.default.createElement(_Sidebar2.default, null)
+	          _react2.default.createElement(_Sidebar2.default, { blogData: this.state.blogData })
 	        ),
 	        _react2.default.createElement(_Footer2.default, null)
 	      );
@@ -22030,6 +22030,12 @@
 	
 	  return App;
 	}(_react2.default.Component);
+	
+	//WIP Sidebar Make Tags section
+	//WIP Tags, list out the array of tags
+	//WIP Sidebar Make Months section
+	//WIP Months, list out the array of months
+	
 	
 	exports.default = App;
 
@@ -22650,80 +22656,37 @@
 	  _createClass(Post, [{
 	    key: 'render',
 	    value: function render() {
-	
 	      return _react2.default.createElement(
 	        'section',
 	        null,
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'col-sm-6' },
-	          _react2.default.createElement(
-	            'h2',
-	            null,
-	            this.props.blogData[0].title
-	          ),
-	          _react2.default.createElement(
-	            'h4',
-	            null,
+	        this.props.blogData.map(function (c, i, a) {
+	          return _react2.default.createElement(
+	            'div',
+	            { key: ("article", i), className: 'col-sm-6' },
 	            _react2.default.createElement(
-	              'time',
-	              null,
-	              this.props.blogData[0].posted,
-	              ' '
-	            )
-	          ),
-	          _react2.default.createElement(_PostParagraphs2.default, { pData: this.props.blogData[0].article })
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'col-sm-6' },
-	          _react2.default.createElement(
-	            'h2',
-	            null,
-	            this.props.blogData[1].title
-	          ),
-	          _react2.default.createElement(
-	            'h4',
-	            null,
+	              'h2',
+	              { key: ("title", i) },
+	              a[i].title
+	            ),
 	            _react2.default.createElement(
-	              'time',
+	              'h4',
 	              null,
-	              this.props.blogData[1].posted,
-	              ' '
-	            )
-	          ),
-	          _react2.default.createElement(_PostParagraphs2.default, { pData: this.props.blogData[1].article })
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'col-sm-6' },
-	          _react2.default.createElement(
-	            'h2',
-	            null,
-	            this.props.blogData[2].title
-	          ),
-	          _react2.default.createElement(
-	            'h4',
-	            null,
-	            _react2.default.createElement(
-	              'time',
-	              null,
-	              this.props.blogData[2].posted,
-	              ' '
-	            )
-	          ),
-	          _react2.default.createElement(_PostParagraphs2.default, { pData: this.props.blogData[2].article })
-	        )
+	              _react2.default.createElement(
+	                'time',
+	                null,
+	                a[i].posted,
+	                ' '
+	              )
+	            ),
+	            _react2.default.createElement(_PostParagraphs2.default, { pData: a[i].article })
+	          );
+	        })
 	      );
 	    }
 	  }]);
 	
 	  return Post;
 	}(_react2.default.Component);
-	
-	//WIP Paragraph breaks in json
-	// break apart post
-	
 	
 	exports.default = Post;
 
@@ -22836,6 +22799,7 @@
 	  _createClass(Sidebar, [{
 	    key: 'render',
 	    value: function render() {
+	      console.log(this.props.blogData);
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'sidebar col-sm-3' },
@@ -22844,8 +22808,18 @@
 	          null,
 	          'Archives'
 	        ),
+	        _react2.default.createElement(
+	          'h4',
+	          null,
+	          'Dates'
+	        ),
 	        _react2.default.createElement(_Months2.default, null),
-	        _react2.default.createElement(_Tags2.default, null)
+	        _react2.default.createElement(
+	          'h4',
+	          null,
+	          'Tags '
+	        ),
+	        _react2.default.createElement(_Tags2.default, { blogData: this.props.blogData[0] })
 	      );
 	    }
 	  }]);
@@ -22996,19 +22970,26 @@
 	  _createClass(Tags, [{
 	    key: 'render',
 	    value: function render() {
+	      // var data = this.props.blogData
+	      // var tagsArr = [];
+	      // data.map(function(c,i,a) {
+	      //   data.tags.map(function (c,i,a) {
+	      //     if (tagsArr.indexOf(c) === -1) {
+	      //       tagsArr.push(c);
+	      //     }
+	      //   }
+	      // })
+	
 	      return _react2.default.createElement(
 	        'ul',
 	        null,
-	        _react2.default.createElement(
-	          'li',
-	          null,
-	          'Tag 2'
-	        ),
-	        _react2.default.createElement(
-	          'li',
-	          null,
-	          'Tag 3'
-	        )
+	        this.props.blogData.tags.map(function (c, i, a) {
+	          return _react2.default.createElement(
+	            'li',
+	            null,
+	            c
+	          );
+	        })
 	      );
 	    }
 	  }]);

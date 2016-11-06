@@ -23,10 +23,15 @@ export default class App extends React.Component{
         <Header />
         <main className="center-block">
           <Main blogData={this.state.blogData} />
-          <Sidebar />
+          <Sidebar blogData={this.state.blogData}  />
         </main>
         <Footer />
       </div>
     );
   }
 }
+
+//WIP Sidebar Make Tags section
+//WIP Tags, list out the array of tags
+//WIP Sidebar Make Months section
+//WIP Months, list out the array of months

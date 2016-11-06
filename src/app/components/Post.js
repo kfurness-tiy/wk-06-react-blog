@@ -21,5 +21,3 @@ export default class Post extends React.Component {
     );
   }
 }
-
-//WIP break apart post
