@@ -7,14 +7,13 @@ import Tags from './Tags';
 
 export default class Sidebar extends React.Component {
   render () {
-    console.log(this.props.blogData);
     return (
       <div className="sidebar col-sm-3">
         <h3>Archives</h3>
         <h4>Dates</h4>
         <Months />
         <h4>Tags </h4>
-        <Tags blogData={this.props.blogData[0]} />
+        <Tags blogData={this.props.blogData} />
       </div>
     );
   }
