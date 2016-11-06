@@ -11,6 +11,7 @@ export default class Tags extends React.Component {
       data[i].tags.map(function (c,i,a) {
         if (tagsArr.indexOf(c) === -1) {
           tagsArr.push(c);
+          tagsArr.sort();
         }
       })
     })
@@ -22,10 +23,3 @@ export default class Tags extends React.Component {
     );
   }
 }
-
-
-// <ul>
-//   {this.props.blogData.tags.map(function(c,i,a){
-//     return <li>{c}</li>
-//   })}
-// </ul>

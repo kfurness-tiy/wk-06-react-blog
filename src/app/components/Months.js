@@ -6,7 +6,7 @@ export default class Months extends React.Component {
   render () {
     return (
       <ul>
-        <li>Month</li>
+        <li>October</li>
       </ul>
     );
   }
