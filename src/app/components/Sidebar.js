@@ -11,7 +11,7 @@ export default class Sidebar extends React.Component {
       <div className="sidebar col-sm-3">
         <h3>Archives</h3>
         <h4>Dates</h4>
-        <Months />
+        <Months clickadoodle={this.props.clickadoodle} blogData={this.props.blogData} />
         <h4>Tags </h4>
         <Tags blogData={this.props.blogData} />
       </div>

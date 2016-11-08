@@ -15,10 +15,9 @@ export default class Tags extends React.Component {
         }
       })
     })
-    console.log(tagsArr);
     return (
       <ul>
-        {tagsArr.map((c,i,a) => <li key={c + i}> {c} </li> )}
+        {tagsArr.map((c,i,a) => <li key={c + i}><a href="#"> {c} </a></li> )}
       </ul>
     );
   }
