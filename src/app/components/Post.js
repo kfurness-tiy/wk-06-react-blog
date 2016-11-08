@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PostParagraphs from "./PostParagraphs";
+import PostDate from "./PostDate"
 
 export default class Post extends React.Component {
   render () {
@@ -11,7 +12,7 @@ export default class Post extends React.Component {
           return (
             <div key={"article", i} className="col-sm-6">
               <h2 key={"title", i}>{a[i].title}</h2>
-              <h4><time>{a[i].posted} </time></h4>
+              <PostDate dateData={a[i].date} />
               <PostParagraphs pData={a[i].article} />
             </div>
             );
