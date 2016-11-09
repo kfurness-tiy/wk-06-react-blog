@@ -1,42 +1,32 @@
 'use strict';
 
 import React from 'react';
+import { BrowserRouter as Router, Link, Match, Miss } from 'react-router';
+
+import About from './About'
+import Footer from './Footer';
 import Header from './Header';
 import Main from './Main';
-import Sidebar from './Sidebar'
-import Footer from './Footer';
+import NotFound from './NotFound'
+
 import appSass from './app.sass'
 
 import blogData from './blog-posts.json';
 
 
-export default class App extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      blogData: blogData
-    }
-  };
-
-  clickadoodle(pizza) {
-    console.log(pizza);
-  }
-
+export default class App extends React.Component {
   render () {
     return (
-      <div className="parentContainer">
-        <Header />
-        <main className="center-block">
-          <Main blogData={this.state.blogData} />
-          <Sidebar clickadoodle={this.clickadoodle.bind(this)} blogData={this.state.blogData}  />
-        </main>
-        <Footer />
-      </div>
+      <Router>
+        <div className="container-fluid">
+          <Header class="container-fluid" />
+          <Match exactly pattern='/' component={Main}/>
+          <Match pattern='/about' component={About}/>
+          <Miss component={NotFound}/>
+          <Footer />
+        </div>
+      </Router>
+
     );
   }
 }
-
-//WIP Sidebar Make Tags section
-//WIP Tags, list out the array of tags
-//WIP Sidebar Make Months section
-//WIP Months, list out the array of months
