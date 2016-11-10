@@ -4,7 +4,6 @@ import React from 'react';
 
 export default class Months extends React.Component {
   handleClick(e){
-    console.log('test: ', e.target.name);
     this.props.setSearch(e.target.name, e.target.id);
   };
 

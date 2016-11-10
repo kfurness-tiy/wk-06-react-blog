@@ -17,7 +17,11 @@ export default class Sidebar extends React.Component {
           searchType={this.props.searchType}
           searchValue={this.props.searchValue}  />
         <h4>Tags </h4>
-        <Tags blogData={this.props.blogData} />
+        <Tags
+          setSearch={this.props.setSearch}
+          blogData={this.props.blogData}
+          searchType={this.props.searchType}
+          searchValue={this.props.searchValue}  />
       </div>
     );
   }

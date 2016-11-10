@@ -21,8 +21,30 @@ export default class Main extends React.Component{
   };
 
   setSearch(type, id) {
-    console.log('type: ', type);
-    console.log('id: ', id);
+    this.setState({
+      searchType: type,
+      searchValue: id,
+      blogDate: this.setBlogData(type, id)
+    });
+  }
+
+  setBlogData(type, id) {
+    let arr = [];
+    if (type === "month") {
+      blogData.map((c,i,a) => {
+        if (c.date.month === id) {
+        arr.push(c);
+        }
+      } )
+    }
+    else if (type === "tag") {
+      blogData.map((c,i,a) => {
+        if (c.tags.includes(id)) {
+        arr.push(c);
+        }
+      })
+    }
+    console.log('arr: ', arr)
   }
 
   render () {

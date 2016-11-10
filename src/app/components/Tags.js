@@ -4,6 +4,10 @@ import React from 'react';
 
 
 export default class Tags extends React.Component {
+  handleClick(e){
+    this.props.setSearch(e.target.name, e.target.id);
+  };
+
   render () {
     var data = this.props.blogData
     var tagsArr = [];
@@ -17,7 +21,7 @@ export default class Tags extends React.Component {
     })
     return (
       <ul>
-        {tagsArr.map((c,i,a) => <li key={c + i} id={c} name="tag"><a href="#"> {c} </a></li> )}
+        {tagsArr.map((c,i,a) => <li key={c + i}><a id={c} name="tag" onClick={this.handleClick.bind(this)}> {c} </a></li> )}
       </ul>
     );
   }
