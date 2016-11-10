@@ -35,7 +35,6 @@ export default class Main extends React.Component{
             searchType={this.state.searchType}
             searchValue={this.state.searchValue}  />
         </main>
-        <Footer />
       </div>
     );
   }
