@@ -2,7 +2,8 @@
 
 import React from 'react';
 import PostParagraphs from "./PostParagraphs";
-import PostDate from "./PostDate"
+import PostDate from "./PostDate";
+import PostTags from "./PostTags";
 
 export default class Post extends React.Component {
   render () {
@@ -14,6 +15,7 @@ export default class Post extends React.Component {
               <h2 key={"title", i}>{a[i].title}</h2>
               <PostDate dateData={a[i].date} />
               <PostParagraphs pData={a[i].article} />
+              <PostTags tagData={a[i].tags} />
             </div>
             );
           })

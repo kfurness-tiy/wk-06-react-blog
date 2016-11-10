@@ -24,7 +24,7 @@ export default class Main extends React.Component{
     this.setState({
       type: type,
       id: id,
-      blogDate: this.setSearchResults(type, id)
+      blogData: this.setSearchResults(type, id)
     });
   }
 
