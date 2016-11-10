@@ -12,8 +12,8 @@ export default class HeaderTop extends React.Component {
         </Link>
         <nav>
           <ul>
-            <Link to='/'><li>Home</li></Link>
-            <Link to='/about'><li>About</li></Link>
+            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/about'>About</Link></li>
           </ul>
         </nav>
       </div>

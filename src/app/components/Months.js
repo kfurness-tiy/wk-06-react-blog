@@ -4,8 +4,8 @@ import React from 'react';
 
 export default class Months extends React.Component {
   handleClick(e){
-    var pizza = "pizza";
-    this.props.clickadoodle(pizza);
+    console.log('test: ', e.target.name);
+    this.props.setSearch(e.target.name, e.target.id);
   };
 
   render () {
@@ -19,7 +19,7 @@ export default class Months extends React.Component {
 
     return (
       <ul>
-        {monthsArr.map((c,i,a) => <li key={c + i} id={c}><a onClick={this.handleClick.bind(this)} href="#"> {c} </a></li> )}
+        {monthsArr.map((c,i,a) => <li key={c + i}><a id={c} name="month" onClick={this.handleClick.bind(this)}  href="#"> {c} </a></li> )}
       </ul>
     );
   }
