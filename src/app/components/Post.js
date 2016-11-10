@@ -10,7 +10,7 @@ export default class Post extends React.Component {
       <section>
         {this.props.blogData.map(function(c,i,a) {
           return (
-            <div key={"article", i} className="col-sm-6">
+            <div key={"article", i} className="post col-sm-6">
               <h2 key={"title", i}>{a[i].title}</h2>
               <PostDate dateData={a[i].date} />
               <PostParagraphs pData={a[i].article} />

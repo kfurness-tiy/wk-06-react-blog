@@ -15,20 +15,20 @@ export default class Main extends React.Component{
     super(props);
     this.state = {
       blogData: blogData,
-      searchType: "",
-      searchValue: "",
+      type: "",
+      id: "",
     }
   };
 
   setSearch(type, id) {
     this.setState({
-      searchType: type,
-      searchValue: id,
-      blogDate: this.setBlogData(type, id)
+      type: type,
+      id: id,
+      blogDate: this.setSearchResults(type, id)
     });
   }
 
-  setBlogData(type, id) {
+  setSearchResults(type, id) {
     let arr = [];
     if (type === "month") {
       blogData.map((c,i,a) => {
@@ -45,17 +45,22 @@ export default class Main extends React.Component{
       })
     }
     console.log('arr: ', arr)
+    return arr
   }
 
   render () {
+    console.log('test:',this.state.id);
     return (
       <div className="parentContainer">
         <main className="center-block">
-          <Content blogData={this.state.blogData} />
+          <Content
+            blogData={this.state.blogData}
+            type={this.state.type}
+            id={this.state.id} />
           <Sidebar
             setSearch={this.setSearch.bind(this)} blogData={this.state.blogData}
-            searchType={this.state.searchType}
-            searchValue={this.state.searchValue}  />
+            type={this.state.type}
+            id={this.state.id}  />
         </main>
       </div>
     );

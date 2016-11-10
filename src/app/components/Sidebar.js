@@ -14,14 +14,14 @@ export default class Sidebar extends React.Component {
         <Months
           setSearch={this.props.setSearch}
           blogData={this.props.blogData}
-          searchType={this.props.searchType}
-          searchValue={this.props.searchValue}  />
+          type={this.props.type}
+          id={this.props.id}  />
         <h4>Tags </h4>
         <Tags
           setSearch={this.props.setSearch}
           blogData={this.props.blogData}
-          searchType={this.props.searchType}
-          searchValue={this.props.searchValue}  />
+          type={this.props.type}
+          id={this.props.id}  />
       </div>
     );
   }
