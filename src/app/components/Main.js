@@ -9,7 +9,7 @@ import appSass from './app.sass'
 
 import blogData from './blog-posts.json';
 
-
+//This is a comment
 export default class Main extends React.Component{
   constructor(props){
     super(props);
