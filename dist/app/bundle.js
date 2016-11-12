@@ -26633,6 +26633,14 @@
 	  }
 	
 	  _createClass(HeaderTop, [{
+	    key: 'testing',
+	    value: function testing(e) {
+	      this.setState({
+	        id: "",
+	        type: ""
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -26640,7 +26648,7 @@
 	        { className: 'header headerTop col-sm-12' },
 	        _react2.default.createElement(
 	          _reactRouter.Link,
-	          { to: '/' },
+	          { to: '/', onClick: this.testing.bind(this) },
 	          _react2.default.createElement('img', { src: './app/img/herekittykitty.png' })
 	        ),
 	        _react2.default.createElement(
@@ -26654,7 +26662,7 @@
 	              null,
 	              _react2.default.createElement(
 	                _reactRouter.Link,
-	                { to: '/' },
+	                { to: '/', onClick: this.testing.bind(this) },
 	                'Home'
 	              )
 	            ),
