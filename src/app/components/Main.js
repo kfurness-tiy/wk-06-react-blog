@@ -9,13 +9,15 @@ import appSass from './app.sass'
 
 import blogData from './blog-posts.json';
 
-let monthsArr = [];
-const monthConst = blogData.map((c,i,a) => {
-  if (monthsArr.includes(c.date.month) !== true) {
-    monthsArr.push(c.date.month)
-  }
+const monthConst = function() {
+  let monthsArr = [];
+  blogData.map((c,i,a) => {
+    if (monthsArr.includes(c.date.month) !== true) {
+      monthsArr.push(c.date.month)
+    }
+  });
   return monthsArr;
-});
+};
 
 const tagConst = function() {
   let tagArr = [];
@@ -38,7 +40,7 @@ export default class Main extends React.Component{
       blogData: blogData,
       type: "",
       id: "",
-      monthConst: monthsArr,
+      monthConst: monthConst(),
       tagConst: tagConst()
     }
   };
