@@ -8,17 +8,9 @@ export default class Months extends React.Component {
   };
 
   render () {
-    var data = this.props.blogData
-    var monthsArr = [];
-    for (let i = 0; i < data.length; i++) {
-      if (monthsArr.includes(data[i].date.month) !== true){
-        monthsArr.push(data[i].date.month);
-      }
-        }
-
     return (
       <ul>
-        {monthsArr.map((c,i,a) => <li key={c + i}><a id={c} name="month" onClick={this.handleClick.bind(this)}  href="#"> {c} </a></li> )}
+        {this.props.monthConst.map((c,i,a) => <li key={c + i}><a id={c} name="month" onClick={this.handleClick.bind(this)}  href="#"> {c} </a></li> )}
       </ul>
     );
   }

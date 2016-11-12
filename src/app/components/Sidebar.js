@@ -14,6 +14,7 @@ export default class Sidebar extends React.Component {
         <Months
           setSearch={this.props.setSearch}
           blogData={this.props.blogData}
+          monthConst={this.props.monthConst}
           type={this.props.type}
           id={this.props.id}  />
         <h4>Tags </h4>

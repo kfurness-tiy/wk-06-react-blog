@@ -9,7 +9,14 @@ import appSass from './app.sass'
 
 import blogData from './blog-posts.json';
 
-//This is a comment
+let monthsArr = [];
+const monthConst = blogData.map((c,i,a) => {
+  if (monthsArr.includes(c.date.month) !== true) {
+    monthsArr.push(c.date.month)
+  }
+  return monthsArr;
+})
+
 export default class Main extends React.Component{
   constructor(props){
     super(props);
@@ -17,6 +24,8 @@ export default class Main extends React.Component{
       blogData: blogData,
       type: "",
       id: "",
+      monthConst: monthsArr,
+
     }
   };
 
@@ -50,6 +59,7 @@ export default class Main extends React.Component{
 
   render () {
     console.log('test:',this.state.id);
+    console.log('const', this.state.monthConst);
     return (
       <div className="parentContainer">
         <main className="center-block">
@@ -59,6 +69,7 @@ export default class Main extends React.Component{
             id={this.state.id} />
           <Sidebar
             setSearch={this.setSearch.bind(this)} blogData={this.state.blogData}
+            monthConst={this.state.monthConst}
             type={this.state.type}
             id={this.state.id}  />
         </main>

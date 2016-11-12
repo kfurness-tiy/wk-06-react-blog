@@ -21982,15 +21982,15 @@
 	
 	var _Main2 = _interopRequireDefault(_Main);
 	
-	var _NotFound = __webpack_require__(/*! ./NotFound */ 235);
+	var _NotFound = __webpack_require__(/*! ./NotFound */ 236);
 	
 	var _NotFound2 = _interopRequireDefault(_NotFound);
 	
-	var _app = __webpack_require__(/*! ./app.sass */ 232);
+	var _app = __webpack_require__(/*! ./app.sass */ 233);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
-	var _blogPosts = __webpack_require__(/*! ./blog-posts.json */ 234);
+	var _blogPosts = __webpack_require__(/*! ./blog-posts.json */ 235);
 	
 	var _blogPosts2 = _interopRequireDefault(_blogPosts);
 	
@@ -26758,7 +26758,7 @@
 	
 	var _Content2 = _interopRequireDefault(_Content);
 	
-	var _Sidebar = __webpack_require__(/*! ./Sidebar */ 227);
+	var _Sidebar = __webpack_require__(/*! ./Sidebar */ 228);
 	
 	var _Sidebar2 = _interopRequireDefault(_Sidebar);
 	
@@ -26766,11 +26766,11 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _app = __webpack_require__(/*! ./app.sass */ 232);
+	var _app = __webpack_require__(/*! ./app.sass */ 233);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
-	var _blogPosts = __webpack_require__(/*! ./blog-posts.json */ 234);
+	var _blogPosts = __webpack_require__(/*! ./blog-posts.json */ 235);
 	
 	var _blogPosts2 = _interopRequireDefault(_blogPosts);
 	
@@ -26782,6 +26782,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	//This is a comment
 	var Main = function (_React$Component) {
 	  _inherits(Main, _React$Component);
 	
@@ -26804,7 +26805,7 @@
 	      this.setState({
 	        type: type,
 	        id: id,
-	        blogDate: this.setSearchResults(type, id)
+	        blogData: this.setSearchResults(type, id)
 	      });
 	    }
 	  }, {
@@ -26944,6 +26945,10 @@
 	
 	var _PostDate2 = _interopRequireDefault(_PostDate);
 	
+	var _PostTags = __webpack_require__(/*! ./PostTags */ 227);
+	
+	var _PostTags2 = _interopRequireDefault(_PostTags);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26977,7 +26982,8 @@
 	              a[i].title
 	            ),
 	            _react2.default.createElement(_PostDate2.default, { dateData: a[i].date }),
-	            _react2.default.createElement(_PostParagraphs2.default, { pData: a[i].article })
+	            _react2.default.createElement(_PostParagraphs2.default, { pData: a[i].article }),
+	            _react2.default.createElement(_PostTags2.default, { tagData: a[i].tags })
 	          );
 	        })
 	      );
@@ -27105,6 +27111,63 @@
 
 /***/ },
 /* 227 */
+/*!****************************************!*\
+  !*** ./src/app/components/PostTags.js ***!
+  \****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var PostTags = function (_React$Component) {
+	  _inherits(PostTags, _React$Component);
+	
+	  function PostTags() {
+	    _classCallCheck(this, PostTags);
+	
+	    return _possibleConstructorReturn(this, (PostTags.__proto__ || Object.getPrototypeOf(PostTags)).apply(this, arguments));
+	  }
+	
+	  _createClass(PostTags, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        null,
+	        _react2.default.createElement(
+	          "h4",
+	          null,
+	          "Tags: ",
+	          this.props.tagData.join(", ")
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return PostTags;
+	}(_react2.default.Component);
+	
+	exports.default = PostTags;
+
+/***/ },
+/* 228 */
 /*!***************************************!*\
   !*** ./src/app/components/Sidebar.js ***!
   \***************************************/
@@ -27122,15 +27185,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Sidebar = __webpack_require__(/*! ./_Sidebar.sass */ 228);
+	var _Sidebar = __webpack_require__(/*! ./_Sidebar.sass */ 229);
 	
 	var _Sidebar2 = _interopRequireDefault(_Sidebar);
 	
-	var _Months = __webpack_require__(/*! ./Months */ 230);
+	var _Months = __webpack_require__(/*! ./Months */ 231);
 	
 	var _Months2 = _interopRequireDefault(_Months);
 	
-	var _Tags = __webpack_require__(/*! ./Tags */ 231);
+	var _Tags = __webpack_require__(/*! ./Tags */ 232);
 	
 	var _Tags2 = _interopRequireDefault(_Tags);
 	
@@ -27192,7 +27255,7 @@
 	exports.default = Sidebar;
 
 /***/ },
-/* 228 */
+/* 229 */
 /*!******************************************!*\
   !*** ./src/app/components/_Sidebar.sass ***!
   \******************************************/
@@ -27201,7 +27264,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./_Sidebar.sass */ 229);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./_Sidebar.sass */ 230);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 216)(content, {});
@@ -27221,7 +27284,7 @@
 	}
 
 /***/ },
-/* 229 */
+/* 230 */
 /*!*************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/app/components/_Sidebar.sass ***!
   \*************************************************************************/
@@ -27238,7 +27301,7 @@
 
 
 /***/ },
-/* 230 */
+/* 231 */
 /*!**************************************!*\
   !*** ./src/app/components/Months.js ***!
   \**************************************/
@@ -27317,7 +27380,7 @@
 	exports.default = Months;
 
 /***/ },
-/* 231 */
+/* 232 */
 /*!************************************!*\
   !*** ./src/app/components/Tags.js ***!
   \************************************/
@@ -27398,7 +27461,7 @@
 	exports.default = Tags;
 
 /***/ },
-/* 232 */
+/* 233 */
 /*!*************************************!*\
   !*** ./src/app/components/app.sass ***!
   \*************************************/
@@ -27407,7 +27470,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./app.sass */ 233);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./app.sass */ 234);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 216)(content, {});
@@ -27427,7 +27490,7 @@
 	}
 
 /***/ },
-/* 233 */
+/* 234 */
 /*!********************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/app/components/app.sass ***!
   \********************************************************************/
@@ -27438,13 +27501,13 @@
 	
 	
 	// module
-	exports.push([module.id, "* {\n  font-size: 18px;\n  color: #555a5f; }\n\nmain {\n  max-width: 1000px;\n  margin-top: 5vh; }\n\n.container-fluid {\n  padding-left: 0;\n  padding-right: 0; }\n\n.post {\n  margin-top: 10px; }\n", ""]);
+	exports.push([module.id, "* {\n  font-size: 18px;\n  color: #555a5f; }\n\nmain {\n  max-width: 1000px;\n  margin-top: 5vh; }\n\n.container-fluid {\n  padding-left: 0;\n  padding-right: 0; }\n\n.post {\n  margin-bottom: 40px; }\n", ""]);
 	
 	// exports
 
 
 /***/ },
-/* 234 */
+/* 235 */
 /*!********************************************!*\
   !*** ./src/app/components/blog-posts.json ***!
   \********************************************/
@@ -27505,7 +27568,7 @@
 	}];
 
 /***/ },
-/* 235 */
+/* 236 */
 /*!****************************************!*\
   !*** ./src/app/components/NotFound.js ***!
   \****************************************/
