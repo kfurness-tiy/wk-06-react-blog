@@ -26782,7 +26782,29 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	//This is a comment
+	var monthConst = function monthConst() {
+	  var monthsArr = [];
+	  _blogPosts2.default.map(function (c, i, a) {
+	    if (monthsArr.includes(c.date.month) !== true) {
+	      monthsArr.push(c.date.month);
+	    }
+	  });
+	  return monthsArr;
+	};
+	
+	var tagConst = function tagConst() {
+	  var tagArr = [];
+	  _blogPosts2.default.map(function (c, i, a) {
+	    _blogPosts2.default[i].tags.map(function (c, i, a) {
+	      if (tagArr.indexOf(c) === -1) {
+	        tagArr.push(c);
+	        tagArr.sort();
+	      }
+	    });
+	  });
+	  return tagArr;
+	};
+	
 	var Main = function (_React$Component) {
 	  _inherits(Main, _React$Component);
 	
@@ -26794,7 +26816,9 @@
 	    _this.state = {
 	      blogData: _blogPosts2.default,
 	      type: "",
-	      id: ""
+	      id: "",
+	      monthConst: monthConst(),
+	      tagConst: tagConst()
 	    };
 	    return _this;
 	  }
@@ -26831,7 +26855,6 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log('test:', this.state.id);
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'parentContainer' },
@@ -26844,6 +26867,8 @@
 	            id: this.state.id }),
 	          _react2.default.createElement(_Sidebar2.default, {
 	            setSearch: this.setSearch.bind(this), blogData: this.state.blogData,
+	            monthConst: this.state.monthConst,
+	            tagConst: this.state.tagConst,
 	            type: this.state.type,
 	            id: this.state.id })
 	        )
@@ -26907,7 +26932,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'col-sm-9' },
+	        { className: 'content col-sm-9' },
 	        _react2.default.createElement(_Post2.default, { blogData: this.props.blogData })
 	      );
 	    }
@@ -27233,6 +27258,7 @@
 	        _react2.default.createElement(_Months2.default, {
 	          setSearch: this.props.setSearch,
 	          blogData: this.props.blogData,
+	          monthConst: this.props.monthConst,
 	          type: this.props.type,
 	          id: this.props.id }),
 	        _react2.default.createElement(
@@ -27243,6 +27269,7 @@
 	        _react2.default.createElement(_Tags2.default, {
 	          setSearch: this.props.setSearch,
 	          blogData: this.props.blogData,
+	          tagConst: this.props.tagConst,
 	          type: this.props.type,
 	          id: this.props.id })
 	      );
@@ -27295,7 +27322,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".sidebar {\n  background-color: #EDEBEB; }\n\nul {\n  list-style-type: none;\n  padding-left: 20px; }\n\na:hover {\n  color: #5F9EA0; }\n\na {\n  color: #555a5f; }\n\na:hover {\n  text-decoration: none;\n  cursor: pointer; }\n", ""]);
+	exports.push([module.id, ".sidebar {\n  background-color: #EDEBEB; }\n\nul {\n  list-style-type: none;\n  padding-left: 20px; }\n\n.sidebar a:hover {\n  color: #5F9EA0; }\n\n.sidebar a {\n  color: #483D8B; }\n\na:hover {\n  text-decoration: none;\n  cursor: pointer; }\n", ""]);
 	
 	// exports
 
@@ -27346,18 +27373,10 @@
 	    value: function render() {
 	      var _this2 = this;
 	
-	      var data = this.props.blogData;
-	      var monthsArr = [];
-	      for (var i = 0; i < data.length; i++) {
-	        if (monthsArr.includes(data[i].date.month) !== true) {
-	          monthsArr.push(data[i].date.month);
-	        }
-	      }
-	
 	      return _react2.default.createElement(
 	        'ul',
 	        null,
-	        monthsArr.map(function (c, i, a) {
+	        this.props.monthConst.map(function (c, i, a) {
 	          return _react2.default.createElement(
 	            'li',
 	            { key: c + i },
@@ -27425,20 +27444,10 @@
 	    value: function render() {
 	      var _this2 = this;
 	
-	      var data = this.props.blogData;
-	      var tagsArr = [];
-	      data.map(function (c, i, a) {
-	        data[i].tags.map(function (c, i, a) {
-	          if (tagsArr.indexOf(c) === -1) {
-	            tagsArr.push(c);
-	            tagsArr.sort();
-	          }
-	        });
-	      });
 	      return _react2.default.createElement(
 	        'ul',
 	        null,
-	        tagsArr.map(function (c, i, a) {
+	        this.props.tagConst.map(function (c, i, a) {
 	          return _react2.default.createElement(
 	            'li',
 	            { key: c + i },
@@ -27501,7 +27510,7 @@
 	
 	
 	// module
-	exports.push([module.id, "* {\n  font-size: 18px;\n  color: #555a5f; }\n\nmain {\n  max-width: 1000px;\n  margin-top: 5vh; }\n\n.container-fluid {\n  padding-left: 0;\n  padding-right: 0; }\n\n.post {\n  margin-bottom: 40px; }\n", ""]);
+	exports.push([module.id, "* {\n  font-size: 18px;\n  color: #555a5f;\n  box-sizing: border-box; }\n\nmain {\n  max-width: 1000px;\n  margin-top: 5vh; }\n\n.content {\n  padding-left: 0; }\n\n.container-fluid {\n  padding-left: 0;\n  padding-right: 0; }\n\n.post {\n  margin-bottom: 40px; }\n\na {\n  color: #555a5f; }\n", ""]);
 	
 	// exports
 
