@@ -15,7 +15,21 @@ const monthConst = blogData.map((c,i,a) => {
     monthsArr.push(c.date.month)
   }
   return monthsArr;
-})
+});
+
+const tagConst = function() {
+  let tagArr = [];
+  blogData.map((c,i,a) => {
+    blogData[i].tags.map(function (c,i,a) {
+      if (tagArr.indexOf(c) === -1) {
+        tagArr.push(c);
+        tagArr.sort();
+      }
+    })
+  });
+  return tagArr;
+};
+
 
 export default class Main extends React.Component{
   constructor(props){
@@ -25,9 +39,10 @@ export default class Main extends React.Component{
       type: "",
       id: "",
       monthConst: monthsArr,
-
+      tagConst: tagConst()
     }
   };
+
 
   setSearch(type, id) {
     this.setState({
@@ -58,8 +73,6 @@ export default class Main extends React.Component{
   }
 
   render () {
-    console.log('test:',this.state.id);
-    console.log('const', this.state.monthConst);
     return (
       <div className="parentContainer">
         <main className="center-block">
@@ -70,6 +83,7 @@ export default class Main extends React.Component{
           <Sidebar
             setSearch={this.setSearch.bind(this)} blogData={this.state.blogData}
             monthConst={this.state.monthConst}
+            tagConst={this.state.tagConst}
             type={this.state.type}
             id={this.state.id}  />
         </main>

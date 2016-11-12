@@ -21,6 +21,7 @@ export default class Sidebar extends React.Component {
         <Tags
           setSearch={this.props.setSearch}
           blogData={this.props.blogData}
+          tagConst={this.props.tagConst}
           type={this.props.type}
           id={this.props.id}  />
       </div>
