@@ -27238,6 +27238,29 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	var monthConst = function monthConst() {
+	  var monthsArr = [];
+	  blogData.map(function (c, i, a) {
+	    if (monthsArr.includes(c.date.month) !== true) {
+	      monthsArr.push(c.date.month);
+	    }
+	  });
+	  return monthsArr;
+	};
+	
+	var tagConst = function tagConst() {
+	  var tagArr = [];
+	  blogData.map(function (c, i, a) {
+	    blogData[i].tags.map(function (c, i, a) {
+	      if (tagArr.indexOf(c) === -1) {
+	        tagArr.push(c);
+	        tagArr.sort();
+	      }
+	    });
+	  });
+	  return tagArr;
+	};
+	
 	var Sidebar = function (_React$Component) {
 	  _inherits(Sidebar, _React$Component);
 	
@@ -27518,7 +27541,7 @@
 	
 	
 	// module
-	exports.push([module.id, "* {\n  font-size: 18px;\n  color: #555a5f;\n  box-sizing: border-box; }\n\nmain {\n  max-width: 1000px;\n  margin-top: 5vh; }\n\n.content {\n  padding-left: 0; }\n\n.container-fluid {\n  padding-left: 0;\n  padding-right: 0; }\n\n.post {\n  margin-bottom: 40px; }\n\na {\n  color: #555a5f; }\n", ""]);
+	exports.push([module.id, "* {\n  font-size: 18px;\n  color: #555a5f;\n  box-sizing: border-box; }\n\nmain {\n  max-width: 1000px;\n  margin-top: 5vh; }\n\nsection {\n  box-sizing: border-box; }\n\n.content {\n  padding-left: 0; }\n\n.container-fluid {\n  padding-left: 0;\n  padding-right: 0; }\n\n.post {\n  margin-bottom: 40px; }\n\na {\n  color: #555a5f; }\n\n@media (min-width: 768px) {\n  .post {\n    min-height: 750px; } }\n", ""]);
 	
 	// exports
 

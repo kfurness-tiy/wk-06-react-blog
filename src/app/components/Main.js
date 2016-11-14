@@ -5,35 +5,9 @@ import React from 'react';
 import Content from './Content';
 import Sidebar from './Sidebar'
 import Footer from './Footer';
-import appSass from './app.sass'
+import appSass from './app.sass';
 
 import blogData from './blog-posts.json';
-
-const monthConst = function() {
-  let monthsArr = [];
-  blogData.map((c,i,a) => {
-    if (monthsArr.includes(c.date.month) !== true) {
-      monthsArr.push(c.date.month)
-    }
-  });
-  return monthsArr;
-};
-
-const tagConst = function() {
-  let tagArr = [];
-  blogData.map((c,i,a) => {
-    blogData[i].tags.map(function (c,i,a) {
-      if (tagArr.indexOf(c) === -1) {
-        tagArr.push(c);
-        tagArr.sort();
-      }
-    })
-  });
-  return tagArr;
-};
-
-
-
 
 export default class Main extends React.Component{
   constructor(props){
@@ -46,7 +20,6 @@ export default class Main extends React.Component{
       tagConst: tagConst()
     }
   };
-
 
   setSearch(type, id) {
     this.setState({
