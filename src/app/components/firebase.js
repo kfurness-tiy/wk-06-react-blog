@@ -1,9 +1,5 @@
 'use strict';
 
-import React from 'react';
-import {render} from 'react-dom';
-import App from './components/App';
-
 var config = {
    apiKey: "AIzaSyDZsopeGTmpwtwidj2kpTSk1t6r_vF0_fo",
    authDomain: "wk-06-react-blog.firebaseapp.com",
@@ -12,7 +8,3 @@ var config = {
    messagingSenderId: "684579050010"
  };
  firebase.initializeApp(config);
-
-const app = document.getElementById('app');
-
-render(<App />, app);

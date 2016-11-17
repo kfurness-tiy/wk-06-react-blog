@@ -5,28 +5,7 @@ import sidebar from './_Sidebar.sass';
 import Months from './Months';
 import Tags from './Tags';
 
-const monthConst = function() {
-  let monthsArr = [];
-  blogData.map((c,i,a) => {
-    if (monthsArr.includes(c.date.month) !== true) {
-      monthsArr.push(c.date.month)
-    }
-  });
-  return monthsArr;
-};
 
-const tagConst = function() {
-  let tagArr = [];
-  blogData.map((c,i,a) => {
-    blogData[i].tags.map(function (c,i,a) {
-      if (tagArr.indexOf(c) === -1) {
-        tagArr.push(c);
-        tagArr.sort();
-      }
-    })
-  });
-  return tagArr;
-};
 
 export default class Sidebar extends React.Component {
   render () {

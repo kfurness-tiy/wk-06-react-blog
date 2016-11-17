@@ -1,6 +1,5 @@
 [
    {
-    "id": 1,
     "title": "Blog Post 1",
     "date": {
       "month": "October",
@@ -11,7 +10,6 @@
     "tags": ["cats", "tuna", "toys", "litter box"]
   },
   {
-    "id": 2,
     "title": "Blog Post #2",
     "date": {
       "month": "October",
@@ -22,7 +20,6 @@
     "tags": ["trouble", "furball", "mice"]
   },
    {
-    "id":3,
     "title": "Blog Post #3",
     "date": {
       "month": "October",
@@ -33,7 +30,6 @@
     "tags": ["food", "beg", "gifts", "litter box"]
   },
   {
-    "id": 4,
     "title": "Blog Post #4",
     "date": {
       "month": "October",
@@ -44,7 +40,6 @@
     "tags": ["play", "toys", "litter box", "animals"]
   },
   {
-    "id": 5,
     "title": "Blog Post #5",
     "date": {
       "month": "November",

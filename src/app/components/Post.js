@@ -7,6 +7,13 @@ import PostTags from "./PostTags";
 
 export default class Post extends React.Component {
   render () {
+    
+    const blabla = this.props.blogData.child('0');
+    blabla.on('value', (snapshot) => {
+      //displays entire object
+      console.log(JSON.stringify(snapshot.val(), null, 3));
+    });
+    console.log('yo yo yo',blabla);
     return (
       <section>
         {this.props.blogData.map(function(c,i,a) {
