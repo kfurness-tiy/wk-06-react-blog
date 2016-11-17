@@ -16,9 +16,15 @@ export default class Post extends React.Component {
       //displays entire object
       console.log(JSON.stringify(snapshot.val(), null, 3));
     });
+    let oreo = dataSet.child('title')
+
     console.log('yo yo yo',blabla);
     return (
       <section>
+          <p>{oreo.on('value', (snapshot) => {
+              //displays entire object
+              JSON.stringify(snapshot.val(), null, 3);
+            })}</p>
             {this.props.blogData.on('child_added', (snapshot) => {
               <div className="post col-sm-6">
                 <h2>{dataSet.child('title')}</h2>
