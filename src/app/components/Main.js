@@ -27,10 +27,11 @@ anotherTest.on('value', (snapshot) => {
   //displays entire object
   console.log(JSON.stringify(snapshot.val(), null, 3));
 });
-// fbRef.child().on('value', (snapshot) => {
+// fbRef.child('3').on('value', (snapshot) => {
 //   //displays entire object
 //   console.log(JSON.stringify(snapshot.val(), null, 3));
 // });
+// console.log('pizzapie',fbRef.child('2'));
 
 
 const monthConst = function() {
@@ -67,6 +68,15 @@ export default class Main extends React.Component{
       tagConst: tagConst()
     }
   };
+
+  // componentWillMount () {
+  //   this.state.blogData.on('child_added', function(dataSnapshot) {
+  //     this.state.blogData.push(dataSnapshot.val());
+  //     this.setState({
+  //       blogData: this.blogData
+  //     });
+  //   }.bind(this));
+  // }
 
   setSearch(type, id) {
     this.setState({
