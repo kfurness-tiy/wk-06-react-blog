@@ -7,8 +7,6 @@ import Sidebar from './Sidebar'
 import Footer from './Footer';
 import appSass from './app.sass';
 
-// import blogData from './blog-posts.json';
-
 import * as firebase from 'firebase';
 
 const config = {
@@ -27,7 +25,6 @@ let tagConst = [];
 let monthConst = [];
 
 function updateBlog(val, id) {
-  console.log('test',val);
   blogData.push(val);
   monthConst.push(val.date.month);
   val.tags.forEach((tag) => {
@@ -91,36 +88,35 @@ export default class Main extends React.Component{
     }).bind(this)
   }
 
-  // setSearch(type, id) {
-  //   this.setState({
-  //     type: type,
-  //     id: id,
-  //     blogData: this.setSearchResults(type, id)
-  //   });
-  // }
-  //
-  // setSearchResults(type, id) {
-  //   let arr = [];
-  //   if (type === "month") {
-  //     blogData.map((c,i,a) => {
-  //       if (c.date.month === id) {
-  //       arr.push(c);
-  //       }
-  //     } )
-  //   }
-  //   else if (type === "tag") {
-  //     blogData.map((c,i,a) => {
-  //       if (c.tags.includes(id)) {
-  //       arr.push(c);
-  //       }
-  //     })
-  //   }
-  //   console.log('arr: ', arr)
-  //   return arr
-  // }
+  setSearch(type, id) {
+    this.setState({
+      type: type,
+      id: id,
+      blogData: this.setSearchResults(type, id)
+    });
+  }
+
+  setSearchResults(type, id) {
+    let arr = [];
+    if (type === "month") {
+      blogData.map((c,i,a) => {
+        if (c.date.month === id) {
+        arr.push(c);
+        }
+      } )
+    }
+    else if (type === "tag") {
+      blogData.map((c,i,a) => {
+        if (c.tags.includes(id)) {
+        arr.push(c);
+        }
+      })
+    }
+    console.log('arr: ', arr)
+    return arr
+  }
 
   render () {
-    console.log(this.state.blogData);
     return (
       <div className="parentContainer">
         <main className="center-block">
@@ -139,8 +135,3 @@ export default class Main extends React.Component{
     );
   }
 }
-
-//WIP Sidebar Make Tags section
-//WIP Tags, list out the array of tags
-//WIP Sidebar Make Months section
-//WIP Months, list out the array of months

@@ -7,7 +7,6 @@ import PostTags from "./PostTags";
 
 export default class Post extends React.Component {
   render () {
-    console.log('pizza',this.props.blogData);
     return (
       <section>
         {this.props.blogData.map((c,i,a) => {
