@@ -7,33 +7,20 @@ import PostTags from "./PostTags";
 
 export default class Post extends React.Component {
   render () {
-    const testingRef = document.getElementById("poop");
-    let dataSet = this.props.blogData;
-
-    let title = this.props.blogData.child('2');
-    const pizza = title.child('title');
-    let cat = pizza.on('value', (snapshot) => {
-      //displays entire object
-      document.getElementById('poop').innerText =
-    JSON.stringify(snapshot.val(), null, 3)
-    });
-    console.log(cat);
-    // let pie = for (let i = 0; i < dataSet.length; i++){
-    //   const li = document.createElement('li')
-    //   dataSet.child('i').on('value', (snapshot) => {
-    //     //displays entire object
-    //     li.innerText = snapshot.val();
-    //     li.id = snapshot.key;
-    //     let munchies = JSON.stringify(snapshot.val(), null, 3);
-    //     testingRef.appendChild(li);
-    //   });
-    // }
-
+    console.log('pizza',this.props.blogData);
     return (
       <section>
-        <ul id="poop">
-          {cat}
-        </ul>
+        {this.props.blogData.map((c,i,a) => {
+         return (
+           <div key={"article", i} className="post col-sm-6">
+             <h2 key={"title", i}> {c.title} </h2>
+             <PostDate dateData={c.date} />
+             <PostParagraphs pData={c.article} />
+             <PostTags tagData={c.tags} />
+           </div>
+           );
+         })
+       }
       </section>
     );
   }
