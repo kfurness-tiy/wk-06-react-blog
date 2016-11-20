@@ -2,9 +2,10 @@
 
 import React from 'react';
 
-import Content from './Content';
-import Sidebar from './Sidebar'
 import Footer from './Footer';
+import Post from './Post';
+import Sidebar from './Sidebar'
+
 import appSass from './app.sass';
 
 import * as firebase from 'firebase';
@@ -42,31 +43,8 @@ const sidebarConst = (arr, content) => {
       newArr.sort();
     }
   });
-  console.log(newArr);
   return newArr;
 }
-// const monthConst = function() {
-//   let monthsArr = [];
-//   blogData.map((c,i,a) => {
-//     if (monthsArr.includes(c.date.month) !== true) {
-//       monthsArr.push(c.date.month)
-//     }
-//   });
-//   return monthsArr;
-// };
-//
-// const tagConst = function() {
-//   let tagArr = [];
-//   blogData.map((c,i,a) => {
-//     blogData[i].tags.map(function (c,i,a) {
-//       if (tagArr.indexOf(c) === -1) {
-//         tagArr.push(c);
-//         tagArr.sort();
-//       }
-//     })
-//   });
-//   return tagArr;
-// };
 
 export default class Main extends React.Component{
   constructor(props){
@@ -91,8 +69,6 @@ export default class Main extends React.Component{
     }).bind(this)
   }
 
-
-
   setSearch(type, id) {
     this.setState({
       type: type,
@@ -100,7 +76,6 @@ export default class Main extends React.Component{
       blogData: this.setSearchResults(type, id)
     });
   }
-
 
   setSearchResults(type, id) {
     let arr = [];
@@ -118,7 +93,6 @@ export default class Main extends React.Component{
         }
       })
     }
-    console.log('arr: ', arr)
     return arr
   }
 
@@ -128,7 +102,7 @@ export default class Main extends React.Component{
     return (
       <div className="parentContainer">
         <main className="center-block">
-          <Content
+          <Post
             blogData={this.state.blogData}
             type={this.state.type}
             id={this.state.id} />
