@@ -21991,15 +21991,15 @@
 	
 	var _Main2 = _interopRequireDefault(_Main);
 	
-	var _NotFound = __webpack_require__(/*! ./NotFound */ 242);
+	var _NotFound = __webpack_require__(/*! ./NotFound */ 240);
 	
 	var _NotFound2 = _interopRequireDefault(_NotFound);
 	
-	var _app = __webpack_require__(/*! ./app.sass */ 233);
+	var _app = __webpack_require__(/*! ./app.sass */ 232);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
-	var _blogPosts = __webpack_require__(/*! ./blog-posts.json */ 235);
+	var _blogPosts = __webpack_require__(/*! ./blog-posts.json */ 241);
 	
 	var _blogPosts2 = _interopRequireDefault(_blogPosts);
 	
@@ -26771,27 +26771,23 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Content = __webpack_require__(/*! ./Content */ 223);
-	
-	var _Content2 = _interopRequireDefault(_Content);
-	
-	var _Sidebar = __webpack_require__(/*! ./Sidebar */ 228);
-	
-	var _Sidebar2 = _interopRequireDefault(_Sidebar);
-	
 	var _Footer = __webpack_require__(/*! ./Footer */ 212);
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _app = __webpack_require__(/*! ./app.sass */ 233);
+	var _Post = __webpack_require__(/*! ./Post */ 223);
+	
+	var _Post2 = _interopRequireDefault(_Post);
+	
+	var _Sidebar = __webpack_require__(/*! ./Sidebar */ 227);
+	
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+	
+	var _app = __webpack_require__(/*! ./app.sass */ 232);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
-	var _blogPosts = __webpack_require__(/*! ./blog-posts.json */ 235);
-	
-	var _blogPosts2 = _interopRequireDefault(_blogPosts);
-	
-	var _firebase = __webpack_require__(/*! firebase */ 236);
+	var _firebase = __webpack_require__(/*! firebase */ 234);
 	
 	var firebase = _interopRequireWildcard(_firebase);
 	
@@ -26815,41 +26811,30 @@
 	firebase.initializeApp(config);
 	
 	var fbRef = firebase.database().ref();
-	var fbData = fbRef.child('wk-06-react-blog');
-	var tester = fbRef.child('0');
-	var anotherTest = tester.child('title');
-	anotherTest.on('value', function (snapshot) {
-	  //displays entire object
-	  console.log(JSON.stringify(snapshot.val(), null, 3));
-	});
-	// fbRef.child('3').on('value', (snapshot) => {
-	//   //displays entire object
-	//   console.log(JSON.stringify(snapshot.val(), null, 3));
-	// });
-	// console.log('pizzapie',fbRef.child('2'));
 	
+	var blogData = [];
+	var tagConst = [];
+	var monthConst = [];
 	
-	var monthConst = function monthConst() {
-	  var monthsArr = [];
-	  _blogPosts2.default.map(function (c, i, a) {
-	    if (monthsArr.includes(c.date.month) !== true) {
-	      monthsArr.push(c.date.month);
+	function updateBlog(val, id) {
+	  blogData.push(val);
+	  monthConst.push(val.date.month);
+	  val.tags.forEach(function (tag) {
+	    tagConst.push(tag);
+	  });
+	}
+	
+	var sidebarConst = function sidebarConst(arr, content) {
+	  var newArr = [];
+	  arr.map(function (c, i, a) {
+	    if (newArr.includes(c) !== true) {
+	      newArr.push(c);
+	    }
+	    if (content === 'tag') {
+	      newArr.sort();
 	    }
 	  });
-	  return monthsArr;
-	};
-	
-	var tagConst = function tagConst() {
-	  var tagArr = [];
-	  _blogPosts2.default.map(function (c, i, a) {
-	    _blogPosts2.default[i].tags.map(function (c, i, a) {
-	      if (tagArr.indexOf(c) === -1) {
-	        tagArr.push(c);
-	        tagArr.sort();
-	      }
-	    });
-	  });
-	  return tagArr;
+	  return newArr;
 	};
 	
 	var Main = function (_React$Component) {
@@ -26861,36 +26846,26 @@
 	    var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
 	
 	    _this.state = {
-	      blogData: fbData,
+	      blogData: blogData,
+	      tagConst: [],
+	      monthConst: [],
 	      type: "",
-	      id: "",
-	      monthConst: monthConst(),
-	      tagConst: tagConst()
+	      id: ""
 	    };
 	    return _this;
 	  }
 	
 	  _createClass(Main, [{
 	    key: 'componentWillMount',
-	
-	
-	    // componentWillMount () {
-	    //   this.state.blogData.on('child_added', function(dataSnapshot) {
-	    //     this.state.blogData.push(dataSnapshot.val());
-	    //     this.setState({
-	    //       blogData: this.blogData
-	    //     });
-	    //   }.bind(this));
-	    // }
-	
-	
 	    value: function componentWillMount() {
 	      var _this2 = this;
 	
-	      this.fbData.on("child_added", function (snapshot) {
+	      fbRef.on("child_added", function (snapshot) {
 	        updateBlog(snapshot.val(), snapshot.key);
 	        _this2.setState({
-	          blogData: _blogPosts2.default
+	          blogData: blogData,
+	          monthConst: monthConst,
+	          tagConst: tagConst
 	        });
 	      }).bind(this);
 	    }
@@ -26908,38 +26883,40 @@
 	    value: function setSearchResults(type, id) {
 	      var arr = [];
 	      if (type === "month") {
-	        _blogPosts2.default.map(function (c, i, a) {
+	        blogData.map(function (c, i, a) {
 	          if (c.date.month === id) {
 	            arr.push(c);
 	          }
 	        });
 	      } else if (type === "tag") {
-	        _blogPosts2.default.map(function (c, i, a) {
+	        blogData.map(function (c, i, a) {
 	          if (c.tags.includes(id)) {
 	            arr.push(c);
 	          }
 	        });
 	      }
-	      console.log('arr: ', arr);
 	      return arr;
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var monthConst = sidebarConst(this.state.monthConst, "month");
+	      var tagConst = sidebarConst(this.state.tagConst, "tag");
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'parentContainer' },
 	        _react2.default.createElement(
 	          'main',
 	          { className: 'center-block' },
-	          _react2.default.createElement(_Content2.default, {
+	          _react2.default.createElement(_Post2.default, {
 	            blogData: this.state.blogData,
 	            type: this.state.type,
 	            id: this.state.id }),
 	          _react2.default.createElement(_Sidebar2.default, {
-	            setSearch: this.setSearch.bind(this), blogData: this.state.blogData,
-	            monthConst: this.state.monthConst,
-	            tagConst: this.state.tagConst,
+	            setSearch: this.setSearch.bind(this),
+	            blogData: this.state.blogData,
+	            monthConst: monthConst,
+	            tagConst: tagConst,
 	            type: this.state.type,
 	            id: this.state.id })
 	        )
@@ -26950,72 +26927,10 @@
 	  return Main;
 	}(_react2.default.Component);
 	
-	//WIP Sidebar Make Tags section
-	//WIP Tags, list out the array of tags
-	//WIP Sidebar Make Months section
-	//WIP Months, list out the array of months
-	
-	
 	exports.default = Main;
 
 /***/ },
 /* 223 */
-/*!***************************************!*\
-  !*** ./src/app/components/Content.js ***!
-  \***************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _Post = __webpack_require__(/*! ./Post */ 224);
-	
-	var _Post2 = _interopRequireDefault(_Post);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Main = function (_React$Component) {
-	  _inherits(Main, _React$Component);
-	
-	  function Main() {
-	    _classCallCheck(this, Main);
-	
-	    return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).apply(this, arguments));
-	  }
-	
-	  _createClass(Main, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'content col-sm-9' },
-	        _react2.default.createElement(_Post2.default, { blogData: this.props.blogData })
-	      );
-	    }
-	  }]);
-	
-	  return Main;
-	}(_react2.default.Component);
-	
-	exports.default = Main;
-
-/***/ },
-/* 224 */
 /*!************************************!*\
   !*** ./src/app/components/Post.js ***!
   \************************************/
@@ -27033,15 +26948,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _PostParagraphs = __webpack_require__(/*! ./PostParagraphs */ 225);
+	var _PostParagraphs = __webpack_require__(/*! ./PostParagraphs */ 224);
 	
 	var _PostParagraphs2 = _interopRequireDefault(_PostParagraphs);
 	
-	var _PostDate = __webpack_require__(/*! ./PostDate */ 226);
+	var _PostDate = __webpack_require__(/*! ./PostDate */ 225);
 	
 	var _PostDate2 = _interopRequireDefault(_PostDate);
 	
-	var _PostTags = __webpack_require__(/*! ./PostTags */ 227);
+	var _PostTags = __webpack_require__(/*! ./PostTags */ 226);
 	
 	var _PostTags2 = _interopRequireDefault(_PostTags);
 	
@@ -27065,10 +26980,9 @@
 	  _createClass(Post, [{
 	    key: 'render',
 	    value: function render() {
-	
 	      return _react2.default.createElement(
 	        'section',
-	        null,
+	        { className: 'content col-sm-9' },
 	        this.props.blogData.map(function (c, i, a) {
 	          return _react2.default.createElement(
 	            'div',
@@ -27076,11 +26990,13 @@
 	            _react2.default.createElement(
 	              'h2',
 	              { key: ("title", i) },
-	              a[i].title
+	              ' ',
+	              c.title,
+	              ' '
 	            ),
-	            _react2.default.createElement(_PostDate2.default, { dateData: a[i].date }),
-	            _react2.default.createElement(_PostParagraphs2.default, { pData: a[i].article }),
-	            _react2.default.createElement(_PostTags2.default, { tagData: a[i].tags })
+	            _react2.default.createElement(_PostDate2.default, { dateData: c.date }),
+	            _react2.default.createElement(_PostParagraphs2.default, { pData: c.article }),
+	            _react2.default.createElement(_PostTags2.default, { tagData: c.tags })
 	          );
 	        })
 	      );
@@ -27090,30 +27006,10 @@
 	  return Post;
 	}(_react2.default.Component);
 	
-	// <p>{oreo.on('value', (snapshot) => {
-	//     //displays entire object
-	//     JSON.stringify(snapshot.val(), null, 3);
-	//   })}</p>
-	//   {this.props.blogData.on('child_added', (snapshot) => {
-	//     <div className="post col-sm-6">
-	//       <h2>{dataSet.child('title')}</h2>
-	//       <PostDate dateData={dataSet.child('date')} />
-	//       <PostParagraphs pData={dataSet.child('article')} />
-	//       <PostTags tagData={dataSet.child('tags')} />
-	//     </div>
-	//   })}
-	
-	
-	// bundle.js:9023 Uncaught Error: Objects are not valid as a React child (found: https://wk-06-react-blog.firebaseio.com/title). If you meant to render a collection of children, use an array instead or wrap the object using createFragment(object) from the React add-ons. Check the render method of `Post`.(…)
-	
-	//http://stackoverflow.com/questions/33726179/reactfire-get-objects-are-not-valid-as-a-react-child-when-binding-firebase-t
-	//https://www.npmjs.com/package/react-addons-create-fragment
-	
-	
 	exports.default = Post;
 
 /***/ },
-/* 225 */
+/* 224 */
 /*!**********************************************!*\
   !*** ./src/app/components/PostParagraphs.js ***!
   \**********************************************/
@@ -27158,7 +27054,9 @@
 	          return _react2.default.createElement(
 	            "p",
 	            { key: ("p", i) },
-	            c
+	            " ",
+	            c,
+	            " "
 	          );
 	        })
 	      );
@@ -27171,7 +27069,7 @@
 	exports.default = PostParagraphs;
 
 /***/ },
-/* 226 */
+/* 225 */
 /*!****************************************!*\
   !*** ./src/app/components/PostDate.js ***!
   \****************************************/
@@ -27227,7 +27125,7 @@
 	exports.default = PostDate;
 
 /***/ },
-/* 227 */
+/* 226 */
 /*!****************************************!*\
   !*** ./src/app/components/PostTags.js ***!
   \****************************************/
@@ -27284,7 +27182,7 @@
 	exports.default = PostTags;
 
 /***/ },
-/* 228 */
+/* 227 */
 /*!***************************************!*\
   !*** ./src/app/components/Sidebar.js ***!
   \***************************************/
@@ -27302,15 +27200,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Sidebar = __webpack_require__(/*! ./_Sidebar.sass */ 229);
+	var _Sidebar = __webpack_require__(/*! ./_Sidebar.sass */ 228);
 	
 	var _Sidebar2 = _interopRequireDefault(_Sidebar);
 	
-	var _Months = __webpack_require__(/*! ./Months */ 231);
+	var _Months = __webpack_require__(/*! ./Months */ 230);
 	
 	var _Months2 = _interopRequireDefault(_Months);
 	
-	var _Tags = __webpack_require__(/*! ./Tags */ 232);
+	var _Tags = __webpack_require__(/*! ./Tags */ 231);
 	
 	var _Tags2 = _interopRequireDefault(_Tags);
 	
@@ -27374,7 +27272,7 @@
 	exports.default = Sidebar;
 
 /***/ },
-/* 229 */
+/* 228 */
 /*!******************************************!*\
   !*** ./src/app/components/_Sidebar.sass ***!
   \******************************************/
@@ -27383,7 +27281,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./_Sidebar.sass */ 230);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./_Sidebar.sass */ 229);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 216)(content, {});
@@ -27403,7 +27301,7 @@
 	}
 
 /***/ },
-/* 230 */
+/* 229 */
 /*!*************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/app/components/_Sidebar.sass ***!
   \*************************************************************************/
@@ -27420,7 +27318,7 @@
 
 
 /***/ },
-/* 231 */
+/* 230 */
 /*!**************************************!*\
   !*** ./src/app/components/Months.js ***!
   \**************************************/
@@ -27491,7 +27389,7 @@
 	exports.default = Months;
 
 /***/ },
-/* 232 */
+/* 231 */
 /*!************************************!*\
   !*** ./src/app/components/Tags.js ***!
   \************************************/
@@ -27562,7 +27460,7 @@
 	exports.default = Tags;
 
 /***/ },
-/* 233 */
+/* 232 */
 /*!*************************************!*\
   !*** ./src/app/components/app.sass ***!
   \*************************************/
@@ -27571,7 +27469,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./app.sass */ 234);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./app.sass */ 233);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 216)(content, {});
@@ -27591,7 +27489,7 @@
 	}
 
 /***/ },
-/* 234 */
+/* 233 */
 /*!********************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/app/components/app.sass ***!
   \********************************************************************/
@@ -27608,63 +27506,7 @@
 
 
 /***/ },
-/* 235 */
-/*!********************************************!*\
-  !*** ./src/app/components/blog-posts.json ***!
-  \********************************************/
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	module.exports = [{
-		"title": "Blog Post 1",
-		"date": {
-			"month": "October",
-			"day": "1",
-			"year": 2016
-		},
-		"article": ["Loves cheeseburgers hate dog. Destroy the blinds lick the plastic bag mew or eat and than sleep on your face yet paw at your fat belly i like big cats and i can not lie.", " Meow all night having their mate disturbing sleeping humans spot something, big eyes, big eyes, crouch, shake butt, prepare to pounce and Gate keepers of hell but have secret plans. Meow chirp at birds chase after silly colored fish toys around the house or swat turds around the house and ears back wide eyed. Has closed eyes but still sees you curl into a furry donut, so massacre a bird in the living room and then look like the cutest and most innocent animal on the planet.", " Refuse to leave cardboard box playing with balls of wool but make meme, make cute face and i am the best. Stretch poop on grasses lick sellotape."],
-		"tags": ["cats", "tuna", "toys", "litter box"]
-	}, {
-		"title": "Blog Post #2",
-		"date": {
-			"month": "October",
-			"day": "5",
-			"year": 2016
-		},
-		"article": ["Lick the plastic bag spread kitty litter all over house and lick arm hair cough furball attack feet, yet if it smells like fish eat as much as you wish. Chase mice refuse to leave cardboard box vommit food and eat it again for white cat sleeps on a black shirt yet curl into a furry donut and human is washing you why halp oh the horror flee scratch hiss bite.", "Bleghbleghvomit my furball really tie the room together has closed eyes but still sees you leave hair everywhere sit by the fire scratch the box. Stare at ceiling light chew on cable sun bathe. Toy mouse squeak roll over you call this cat food?", "Cat slap dog in face vommit food and eat it again for slap owner's face at 5am until human fills food dish and fall over dead (not really but gets sypathy) or wake up human for food at 4am. Cough furball lick sellotape put butt in owner's face yet meow meow, i tell my human shake treat bag spread kitty litter all over house yet leave fur on owners clothes."],
-		"tags": ["trouble", "furball", "mice"]
-	}, {
-		"title": "Blog Post #3",
-		"date": {
-			"month": "October",
-			"day": "17",
-			"year": 2016
-		},
-		"article": ["Meow for food, then when human fills food dish, take a few bites of food and continue meowing mark territory thinking longingly about tuna brine hopped up on catnip, or cat snacks. Unwrap toilet paper lick the curtain just to be annoying or sniff other cat's butt and hang jaw half open thereafter stretch, for swat at dog shove bum in owner's face like camera lens hunt anything that moves.", "Hide at bottom of staircase to trip human play time, and kitty power! and pee in human's bed until he cleans the litter box. Eat prawns daintily with a claw then lick paws clean wash down prawns with a lap of carnation milk then retire to the warmest spot on the couch to claw at the fabric before taking a catnap mrow rub face on everything, for leave dead animals as gifts."],
-		"tags": ["food", "beg", "gifts", "litter box"]
-	}, {
-		"title": "Blog Post #4",
-		"date": {
-			"month": "October",
-			"day": "29",
-			"year": 2016
-		},
-		"article": ["Jump launch to pounce upon little yarn mouse, bare fangs at toy run hide in litter box until treats are fed make muffins, but sweet beast, or play time. Favor packaging over toy thinking longingly about tuna brine yet stretch, so climb a tree, wait for a fireman jump to fireman then scratch his face. Rub face on everything intently stare at the same spot sit by the fire but scratch at the door then walk away.", "Go into a room to decide you didn't want to be in there anyway climb a tree, wait for a fireman jump to fireman then scratch his face stare at the wall, play with food and get confused by dust kick up litter, and put toy mouse in food bowl run out of litter box at full speed swat turds around the house. Swat at dog sit in window and stare ooo, a bird!"],
-		"tags": ["play", "toys", "litter box", "animals"]
-	}, {
-		"title": "Blog Post #5",
-		"date": {
-			"month": "November",
-			"day": "3",
-			"year": 2016
-		},
-		"article": ["Kitty ipsum dolor sit amet, shed everywhere shed everywhere stretching attack your ankles chase the red dot, hairball run catnip eat the grass sniff leave dead animals as gifts.", "Chirp at birds meow immediately regret falling into bathtub all of a sudden cat goes crazy scamper but flop over, but chase after silly colored fish toys around the house. Hack up furballs chase the pig around the house lick plastic bags nap all day, yet hack up furballs paw at your fat belly.", "Intently stare at the same spot. Wake up human for food at 4am eat the fat cats food for meowzer! human give me attention meow so steal the warm chair right after you get up, for eat the fat cats food.", "Hide head under blanket so no one can see jump launch to pounce upon little yarn mouse, bare fangs at toy run hide in litter box until treats are fed for need to chase tail, and sweet beast, or catch mouse and gave it as a present. Lick the other cats if it smells like fish eat as much as you wish."],
-		"tags": ["catnip", "toys", "mice", "litter box"]
-	}];
-
-/***/ },
-/* 236 */
+/* 234 */
 /*!****************************************!*\
   !*** ./~/firebase/firebase-browser.js ***!
   \****************************************/
@@ -27677,16 +27519,16 @@
 	 *
 	 *   firebase = require('firebase');
 	 */
-	var firebase = __webpack_require__(/*! ./app */ 237);
-	__webpack_require__(/*! ./auth */ 238);
-	__webpack_require__(/*! ./database */ 239);
-	__webpack_require__(/*! ./storage */ 240);
-	__webpack_require__(/*! ./messaging */ 241);
+	var firebase = __webpack_require__(/*! ./app */ 235);
+	__webpack_require__(/*! ./auth */ 236);
+	__webpack_require__(/*! ./database */ 237);
+	__webpack_require__(/*! ./storage */ 238);
+	__webpack_require__(/*! ./messaging */ 239);
 	module.exports = firebase;
 
 
 /***/ },
-/* 237 */
+/* 235 */
 /*!***************************!*\
   !*** ./~/firebase/app.js ***!
   \***************************/
@@ -27727,13 +27569,13 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 238 */
+/* 236 */
 /*!****************************!*\
   !*** ./~/firebase/auth.js ***!
   \****************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var firebase = __webpack_require__(/*! ./app */ 237);
+	var firebase = __webpack_require__(/*! ./app */ 235);
 	/*! @license Firebase v3.6.1
 	    Build: 3.6.1-rc.3
 	    Terms: https://firebase.google.com/terms/ */
@@ -27950,13 +27792,13 @@
 
 
 /***/ },
-/* 239 */
+/* 237 */
 /*!********************************!*\
   !*** ./~/firebase/database.js ***!
   \********************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var firebase = __webpack_require__(/*! ./app */ 237);
+	var firebase = __webpack_require__(/*! ./app */ 235);
 	/*! @license Firebase v3.6.1
 	    Build: 3.6.1-rc.3
 	    Terms: https://firebase.google.com/terms/
@@ -28220,13 +28062,13 @@
 
 
 /***/ },
-/* 240 */
+/* 238 */
 /*!*******************************!*\
   !*** ./~/firebase/storage.js ***!
   \*******************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var firebase = __webpack_require__(/*! ./app */ 237);
+	var firebase = __webpack_require__(/*! ./app */ 235);
 	/*! @license Firebase v3.6.1
 	    Build: 3.6.1-rc.3
 	    Terms: https://firebase.google.com/terms/ */
@@ -28280,13 +28122,13 @@
 
 
 /***/ },
-/* 241 */
+/* 239 */
 /*!*********************************!*\
   !*** ./~/firebase/messaging.js ***!
   \*********************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var firebase = __webpack_require__(/*! ./app */ 237);
+	var firebase = __webpack_require__(/*! ./app */ 235);
 	/*! @license Firebase v3.6.1
 	    Build: 3.6.1-rc.3
 	    Terms: https://firebase.google.com/terms/ */
@@ -28325,7 +28167,7 @@
 
 
 /***/ },
-/* 242 */
+/* 240 */
 /*!****************************************!*\
   !*** ./src/app/components/NotFound.js ***!
   \****************************************/
@@ -28359,6 +28201,62 @@
 	};
 	
 	exports.default = NotFound;
+
+/***/ },
+/* 241 */
+/*!********************************************!*\
+  !*** ./src/app/components/blog-posts.json ***!
+  \********************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	module.exports = [{
+		"title": "Blog Post 1",
+		"date": {
+			"month": "October",
+			"day": "1",
+			"year": 2016
+		},
+		"article": ["Loves cheeseburgers hate dog. Destroy the blinds lick the plastic bag mew or eat and than sleep on your face yet paw at your fat belly i like big cats and i can not lie.", " Meow all night having their mate disturbing sleeping humans spot something, big eyes, big eyes, crouch, shake butt, prepare to pounce and Gate keepers of hell but have secret plans. Meow chirp at birds chase after silly colored fish toys around the house or swat turds around the house and ears back wide eyed. Has closed eyes but still sees you curl into a furry donut, so massacre a bird in the living room and then look like the cutest and most innocent animal on the planet.", " Refuse to leave cardboard box playing with balls of wool but make meme, make cute face and i am the best. Stretch poop on grasses lick sellotape."],
+		"tags": ["cats", "tuna", "toys", "litter box"]
+	}, {
+		"title": "Blog Post #2",
+		"date": {
+			"month": "October",
+			"day": "5",
+			"year": 2016
+		},
+		"article": ["Lick the plastic bag spread kitty litter all over house and lick arm hair cough furball attack feet, yet if it smells like fish eat as much as you wish. Chase mice refuse to leave cardboard box vommit food and eat it again for white cat sleeps on a black shirt yet curl into a furry donut and human is washing you why halp oh the horror flee scratch hiss bite.", "Bleghbleghvomit my furball really tie the room together has closed eyes but still sees you leave hair everywhere sit by the fire scratch the box. Stare at ceiling light chew on cable sun bathe. Toy mouse squeak roll over you call this cat food?", "Cat slap dog in face vommit food and eat it again for slap owner's face at 5am until human fills food dish and fall over dead (not really but gets sypathy) or wake up human for food at 4am. Cough furball lick sellotape put butt in owner's face yet meow meow, i tell my human shake treat bag spread kitty litter all over house yet leave fur on owners clothes."],
+		"tags": ["trouble", "furball", "mice"]
+	}, {
+		"title": "Blog Post #3",
+		"date": {
+			"month": "October",
+			"day": "17",
+			"year": 2016
+		},
+		"article": ["Meow for food, then when human fills food dish, take a few bites of food and continue meowing mark territory thinking longingly about tuna brine hopped up on catnip, or cat snacks. Unwrap toilet paper lick the curtain just to be annoying or sniff other cat's butt and hang jaw half open thereafter stretch, for swat at dog shove bum in owner's face like camera lens hunt anything that moves.", "Hide at bottom of staircase to trip human play time, and kitty power! and pee in human's bed until he cleans the litter box. Eat prawns daintily with a claw then lick paws clean wash down prawns with a lap of carnation milk then retire to the warmest spot on the couch to claw at the fabric before taking a catnap mrow rub face on everything, for leave dead animals as gifts."],
+		"tags": ["food", "beg", "gifts", "litter box"]
+	}, {
+		"title": "Blog Post #4",
+		"date": {
+			"month": "October",
+			"day": "29",
+			"year": 2016
+		},
+		"article": ["Jump launch to pounce upon little yarn mouse, bare fangs at toy run hide in litter box until treats are fed make muffins, but sweet beast, or play time. Favor packaging over toy thinking longingly about tuna brine yet stretch, so climb a tree, wait for a fireman jump to fireman then scratch his face. Rub face on everything intently stare at the same spot sit by the fire but scratch at the door then walk away.", "Go into a room to decide you didn't want to be in there anyway climb a tree, wait for a fireman jump to fireman then scratch his face stare at the wall, play with food and get confused by dust kick up litter, and put toy mouse in food bowl run out of litter box at full speed swat turds around the house. Swat at dog sit in window and stare ooo, a bird!"],
+		"tags": ["play", "toys", "litter box", "animals"]
+	}, {
+		"title": "Blog Post #5",
+		"date": {
+			"month": "November",
+			"day": "3",
+			"year": 2016
+		},
+		"article": ["Kitty ipsum dolor sit amet, shed everywhere shed everywhere stretching attack your ankles chase the red dot, hairball run catnip eat the grass sniff leave dead animals as gifts.", "Chirp at birds meow immediately regret falling into bathtub all of a sudden cat goes crazy scamper but flop over, but chase after silly colored fish toys around the house. Hack up furballs chase the pig around the house lick plastic bags nap all day, yet hack up furballs paw at your fat belly.", "Intently stare at the same spot. Wake up human for food at 4am eat the fat cats food for meowzer! human give me attention meow so steal the warm chair right after you get up, for eat the fat cats food.", "Hide head under blanket so no one can see jump launch to pounce upon little yarn mouse, bare fangs at toy run hide in litter box until treats are fed for need to chase tail, and sweet beast, or catch mouse and gave it as a present. Lick the other cats if it smells like fish eat as much as you wish."],
+		"tags": ["catnip", "toys", "mice", "litter box"]
+	}];
 
 /***/ }
 /******/ ]);
