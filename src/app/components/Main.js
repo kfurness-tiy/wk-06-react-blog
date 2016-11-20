@@ -32,6 +32,19 @@ function updateBlog(val, id) {
   });
 }
 
+const sidebarConst = (arr, content) => {
+  let newArr = [];
+  arr.map(function(c,i,a) {
+    if (newArr.includes(c) !== true) {
+      newArr.push(c);
+    }
+    if(content === 'tag') {
+      newArr.sort();
+    }
+  });
+  console.log(newArr);
+  return newArr;
+}
 // const monthConst = function() {
 //   let monthsArr = [];
 //   blogData.map((c,i,a) => {
@@ -67,16 +80,6 @@ export default class Main extends React.Component{
     }
   };
 
-  // componentWillMount () {
-  //   this.state.blogData.on('child_added', function(dataSnapshot) {
-  //     this.state.blogData.push(dataSnapshot.val());
-  //     this.setState({
-  //       blogData: this.blogData
-  //     });
-  //   }.bind(this));
-  // }
-
-
   componentWillMount() {
     fbRef.on("child_added", (snapshot) => {
       updateBlog(snapshot.val(), snapshot.key);
@@ -88,6 +91,8 @@ export default class Main extends React.Component{
     }).bind(this)
   }
 
+
+
   setSearch(type, id) {
     this.setState({
       type: type,
@@ -95,6 +100,7 @@ export default class Main extends React.Component{
       blogData: this.setSearchResults(type, id)
     });
   }
+
 
   setSearchResults(type, id) {
     let arr = [];
@@ -117,6 +123,8 @@ export default class Main extends React.Component{
   }
 
   render () {
+    let monthConst = sidebarConst(this.state.monthConst, "month");
+    let tagConst = sidebarConst(this.state.tagConst, "tag");
     return (
       <div className="parentContainer">
         <main className="center-block">
@@ -125,9 +133,10 @@ export default class Main extends React.Component{
             type={this.state.type}
             id={this.state.id} />
           <Sidebar
+            setSearch = {this.setSearch.bind(this)}
             blogData={this.state.blogData}
-            monthConst={this.state.monthConst}
-            tagConst={this.state.tagConst}
+            monthConst={monthConst}
+            tagConst={tagConst}
             type={this.state.type}
             id={this.state.id}  />
         </main>
